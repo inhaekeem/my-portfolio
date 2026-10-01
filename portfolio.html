@@ -7,261 +7,360 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Pinyon+Script&family=Noto+Serif+KR:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#e9ebe6; --bg-2:#f1f2ee;
-  --canvas-1:#e6d6c0; --canvas-2:#cdb394; --canvas-3:#b8987a;
-  --terra:#b0532f; --terra-soft:#e9cdbd;
-  --ink:#2b2b28; --ink-2:#55554f; --ink-3:#8b8b83; --line:rgba(43,43,40,.16);
+  --cream:#f6f0e8; --cream-2:#efe7dc; --paper:#fbf8f3;
+  --olive:#3f4636; --olive-2:#6b735e; --sage:#a3aa94; --sage-soft:#d8dccd;
+  --gold:#b08d57; --gold-soft:#e6d5b8;
+  --ink:#2f332a; --ink-2:#5c6055; --ink-3:#8d9084; --line:rgba(63,70,54,.15);
   --sans:'Pretendard Variable',Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  --display:'Italiana',serif;
+  --serif:'Playfair Display',serif;
+  --serif-ko:'Noto Serif KR',serif;
+  --script:'Pinyon Script',cursive;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);font-weight:300;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.8;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;position:relative;overflow-x:hidden}
+section[id]{scroll-margin-top:70px}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1200px;margin:0 auto;padding:0 40px}
-.label{font-size:11px;letter-spacing:.32em;text-transform:uppercase;font-weight:400;color:var(--ink-2)}
-.display{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.02em}
-.hl{color:var(--terra)}
-
-/* organic hairlines */
-.cracks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
-.cracks path{fill:none;stroke:#fff;stroke-width:1.2;opacity:.9}
-main,header,.marquee,footer{position:relative;z-index:1}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.eyebrow{font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.hl{color:var(--gold)}
+.star{display:inline-block;color:var(--gold);animation:twinkle 2.6s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:1;transform:scale(1) rotate(0)}50%{opacity:.35;transform:scale(.7) rotate(45deg)}}
 
 /* ---------- Nav ---------- */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 40px;
-  background:rgba(233,235,230,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
-.nav.scrolled{border-bottom-color:var(--line)}
-.logo{font-family:var(--display);font-size:22px;letter-spacing:.12em}
-.logo b{color:var(--terra);font-weight:400}
-.menu{display:flex;gap:30px;list-style:none}
-.menu a{font-size:11.5px;letter-spacing:.24em;color:var(--ink-2);position:relative;padding:4px 0;transition:color .2s}
-.menu a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--ink);transition:right .3s}
-.menu a:hover{color:var(--ink)}
-.menu a:hover::after{right:0}
-.nav .cta{font-size:11px;letter-spacing:.24em;padding:10px 20px;border:1px solid var(--ink);border-radius:999px;transition:background .25s,color .25s}
-.nav .cta:hover{background:var(--ink);color:var(--bg)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,box-shadow .3s}
+.nav.scrolled{background:rgba(246,240,232,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:22px;padding-bottom:22px}
+.mono{font-family:var(--serif);font-size:30px;line-height:1;color:var(--gold);letter-spacing:-.02em}
+.menu{display:flex;gap:34px;list-style:none}
+.menu a{font-size:11.5px;letter-spacing:.18em;color:var(--ink-2);position:relative;padding:4px 0;transition:color .2s}
+.menu a::after{content:"";position:absolute;left:50%;right:50%;bottom:-2px;height:1px;background:var(--gold);transition:left .3s,right .3s}
+.menu a:hover{color:var(--olive)}
+.menu a:hover::after{left:0;right:0}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-right .rule{width:90px;height:1px;background:var(--gold)}
+.nav .cta{font-size:11px;letter-spacing:.2em;padding:9px 18px;border:1px solid var(--gold);color:var(--olive);transition:background .25s,color .25s}
+.nav .cta:hover{background:var(--olive);border-color:var(--olive);color:var(--cream)}
 
 /* ---------- Hero ---------- */
-.hero{padding-top:110px}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:min(84vh,760px)}
-.hero-text{padding:60px 48px 48px 0;display:flex;flex-direction:column;justify-content:center}
-.hero-text .label{margin-bottom:34px}
-.hero h1{font-size:clamp(54px,7.4vw,112px)}
-.hero h1 > span{display:block}
-.hero h1 > span:nth-child(2){padding-left:.9em}
-.hero h1 > span:nth-child(3){padding-left:1.8em}
-.ko-name{margin:30px 0 8px 1.2em;font-size:clamp(17px,1.5vw,20px);font-weight:300;letter-spacing:.06em}
-.hero-text p{color:var(--ink-2);max-width:380px;margin-left:1.4em;font-size:14.5px}
-.hero-bottom{display:flex;align-items:center;gap:28px;margin:44px 0 0 1.4em;flex-wrap:wrap}
-.hero-bottom .year{font-size:11px;letter-spacing:.24em;color:var(--ink-3)}
-.btn{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;padding:6px 0;border-bottom:1px solid var(--ink);transition:gap .25s,color .25s,border-color .25s}
-.btn:hover{gap:16px;color:var(--terra);border-color:var(--terra)}
-.btn.ghost{border-bottom-color:transparent;color:var(--ink-2)}
+.hero{padding-top:120px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:end}
+.hero-text{padding-bottom:56px}
+.hello{font-family:var(--script);font-size:clamp(40px,4.6vw,58px);color:var(--gold);line-height:1;margin-bottom:6px;margin-left:6px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(68px,10vw,138px);line-height:.92;color:var(--olive);letter-spacing:-.01em}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .ch{display:inline-block;transform:translateY(110%);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 .accent{color:var(--gold)}
+@keyframes rise{to{transform:none}}
+.role{margin:22px 0 22px;font-size:clamp(12px,1.2vw,15px)}
+.hero-text p{color:var(--ink-2);max-width:400px;margin-bottom:34px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:14px 26px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;transition:background .25s,color .25s,border-color .25s}
+.btn .arr{display:inline-block;transition:transform .3s}
+.btn:hover .arr{transform:translateX(6px)}
+.btn.solid{background:var(--olive);color:var(--cream)}
+.btn.solid:hover{background:var(--gold)}
+.btn.line{border:1px solid var(--olive-2);color:var(--olive)}
+.btn.line:hover{background:var(--olive);color:var(--cream)}
 
-/* canvas panel (hero visual) */
-.visual{position:relative;overflow:hidden;min-height:440px;
+/* arch visual */
+.visual{position:relative;justify-self:center;width:100%;max-width:440px;aspect-ratio:4/5.2;transition:transform .4s ease-out}
+.arch-line{position:absolute;inset:-18px -18px 0 -18px;width:calc(100% + 36px);height:calc(100% + 18px);overflow:visible}
+.arch-line path{fill:none;stroke:var(--gold);stroke-width:1.2;stroke-dasharray:2000;stroke-dashoffset:2000;animation:draw 2.4s .3s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.arch{position:absolute;inset:0;border-radius:999px 999px 0 0;overflow:hidden;
   background:
-    radial-gradient(60% 45% at 30% 25%,rgba(255,255,255,.55) 0%,transparent 70%),
-    radial-gradient(50% 50% at 75% 80%,rgba(176,83,47,.28) 0%,transparent 70%),
-    linear-gradient(160deg,var(--canvas-1) 0%,var(--canvas-2) 60%,var(--canvas-3) 100%)}
-.visual::before{content:"";position:absolute;left:12%;right:12%;top:12%;bottom:24%;
-  background:linear-gradient(170deg,rgba(255,255,255,.35),rgba(255,255,255,.08));box-shadow:0 30px 60px rgba(80,55,30,.18)}
-.visual::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:34%;height:24%;background:#efe9df;box-shadow:inset 0 10px 20px rgba(0,0,0,.05)}
-.visual .big{position:absolute;left:0;right:0;top:44%;text-align:center;font-family:var(--display);font-size:clamp(48px,6vw,88px);letter-spacing:.14em;color:rgba(255,255,255,.8);z-index:1}
-.chip{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;padding:10px 16px;background:rgba(241,242,238,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:12px;letter-spacing:.06em;font-weight:400;animation:float 6s ease-in-out infinite}
-.chip span{font-size:15px}
-.chip.c1{top:5%;left:6%}
-.chip.c2{top:80%;left:5%;animation-delay:-2s}
-.chip.c3{top:20%;right:5%;animation-delay:-4s}
+    radial-gradient(45% 35% at 50% 34%,rgba(255,255,255,.55) 0%,transparent 70%),
+    radial-gradient(60% 50% at 50% 100%,rgba(63,70,54,.35) 0%,transparent 70%),
+    linear-gradient(170deg,#c2c8b4 0%,#a3aa94 55%,#868e78 100%)}
+.arch::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.22) 45%,transparent 60%);transform:translateX(-100%);animation:sheen 6s 2s ease-in-out infinite}
+@keyframes sheen{0%{transform:translateX(-100%)}40%,100%{transform:translateX(100%)}}
+.arch .initial{position:absolute;left:0;right:0;top:30%;text-align:center;font-family:var(--serif);font-size:clamp(90px,11vw,150px);color:rgba(251,248,243,.85);line-height:1}
+.arch .name-ko{position:absolute;left:0;right:0;top:62%;text-align:center;font-family:var(--serif-ko);font-size:15px;letter-spacing:.5em;color:rgba(251,248,243,.9);padding-left:.5em}
+.badge{position:absolute;right:-46px;top:16%;width:132px;height:132px;z-index:3}
+.badge svg{width:100%;height:100%;animation:spin 18s linear infinite}
+.badge text{font-size:10.5px;letter-spacing:3.2px;fill:var(--olive);font-family:var(--sans);font-weight:500}
+.badge .core{position:absolute;inset:0;display:grid;place-items:center;font-size:18px}
+.badge::before{content:"";position:absolute;inset:0;border-radius:50%;background:rgba(251,248,243,.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid var(--gold-soft)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.chip{position:absolute;z-index:3;display:flex;align-items:center;gap:8px;padding:9px 15px;background:var(--paper);border:1px solid var(--gold-soft);font-size:12px;color:var(--olive);box-shadow:0 10px 24px rgba(63,70,54,.1);animation:float 6s ease-in-out infinite}
+.chip.c1{left:-40px;top:44%}
+.chip.c2{left:-20px;bottom:12%;animation-delay:-2s}
+.chip.c3{right:-24px;bottom:28%;animation-delay:-4s}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.leaves{position:absolute;right:-12px;top:90px;width:160px;z-index:0;opacity:.9;pointer-events:none;transform-origin:100% 0;animation:sway 7s ease-in-out infinite}
+.leaves path{fill:#7d8a69}
+.leaves path:nth-child(even){fill:#93a07d}
+@keyframes sway{0%,100%{transform:rotate(0)}50%{transform:rotate(-4deg)}}
 
-/* ---------- Marquee ---------- */
-.marquee{overflow:hidden;padding:30px 0;margin:90px 0 0;border-block:1px solid var(--line)}
-.track{display:flex;gap:56px;width:max-content;animation:scroll 36s linear infinite}
-.track span{font-family:var(--display);font-size:clamp(26px,3vw,40px);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:56px;color:var(--ink-2)}
-.track span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--terra)}
+/* stats */
+.stats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);background:var(--olive-2);color:var(--cream)}
+.stat{display:flex;align-items:center;gap:16px;padding:26px 28px;position:relative}
+.stat + .stat::before{content:"";position:absolute;left:0;top:24%;bottom:24%;width:1px;background:rgba(246,240,232,.25)}
+.stat .ic{width:30px;height:30px;flex:none;color:var(--gold-soft)}
+.stat b{display:block;font-family:var(--serif);font-weight:400;font-size:32px;line-height:1}
+.stat span{font-size:11px;letter-spacing:.14em;color:rgba(246,240,232,.8)}
+
+/* marquee */
+.marquee{overflow:hidden;padding:22px 0;margin-top:90px;border-block:1px solid var(--line)}
+.track{display:flex;gap:44px;width:max-content;animation:scroll 34s linear infinite}
+.track span{font-family:var(--serif);font-size:clamp(22px,2.4vw,30px);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:44px;color:var(--olive)}
+.track span::after{content:"✦";color:var(--gold);font-size:.6em}
 @keyframes scroll{to{transform:translateX(-50%)}}
 
-/* ---------- Editorial sections ---------- */
-.block{padding-top:130px}
-.split{display:grid;grid-template-columns:1fr 1fr}
-.split > *{min-width:0}
-.pad{padding:0 0 0 56px}
-.split.rev .pad{padding:0 56px 0 0}
-.num{font-family:var(--display);font-size:clamp(72px,8vw,112px);line-height:1;margin-bottom:18px}
-.big-title{font-size:clamp(44px,6vw,92px)}
-.big-title span{display:block}
-.big-title span:nth-child(2){padding-left:1.2em}
-.big-title span:nth-child(3){padding-left:2.4em}
-.ko-h{font-size:clamp(18px,1.8vw,22px);font-weight:300;letter-spacing:.04em;margin-top:14px}
-.body{color:var(--ink-2);font-size:14.5px;max-width:460px}
-.small{font-size:13px;color:var(--ink-3)}
+/* ---------- Sections ---------- */
+.block{padding-top:110px}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:34px;flex-wrap:wrap}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,46px);color:var(--olive);line-height:1.1;margin-top:6px;display:flex;align-items:center;gap:14px}
+.sec-head h2 .star{font-size:.45em}
+.sec-head .ko{font-family:var(--serif-ko);font-size:15px;color:var(--ink-2);letter-spacing:.06em}
 
-/* canvas panels */
-.canvas{position:relative;overflow:hidden;aspect-ratio:3/4;
+/* 01 about */
+.about{display:grid;grid-template-columns:1fr 1.2fr .8fr;gap:48px;align-items:center}
+.about .quote{font-family:var(--serif-ko);font-size:clamp(22px,2.4vw,30px);line-height:1.55;color:var(--olive)}
+.about .quote::before{content:"“";display:block;font-family:var(--serif);font-size:80px;line-height:.6;color:var(--gold);margin-bottom:10px}
+.about .body{color:var(--ink-2);padding-left:40px;border-left:1px solid var(--line)}
+.sign{font-family:var(--script);font-size:34px;color:var(--gold);margin-top:16px;display:block}
+.mini-arch{aspect-ratio:3/4;border-radius:999px 999px 0 0;position:relative;overflow:hidden;
   background:
-    radial-gradient(55% 40% at 35% 30%,rgba(255,255,255,.5) 0%,transparent 70%),
-    linear-gradient(165deg,var(--canvas-1) 0%,var(--canvas-2) 65%,var(--canvas-3) 100%)}
-.canvas.terra{background:
-    radial-gradient(45% 40% at 40% 45%,rgba(176,83,47,.55) 0%,transparent 70%),
-    radial-gradient(55% 40% at 70% 20%,rgba(255,255,255,.45) 0%,transparent 70%),
-    linear-gradient(165deg,#e8dccb 0%,#d4bea2 70%,#c2a688 100%)}
-.canvas .stamp{position:absolute;left:24px;bottom:18px;font-family:var(--display);font-size:22px;letter-spacing:.2em;color:rgba(255,255,255,.92);text-transform:uppercase}
+    radial-gradient(40% 30% at 70% 25%,rgba(255,255,255,.7) 0%,transparent 70%),
+    linear-gradient(180deg,#ebe4d8 0%,#d9cfbf 100%)}
+.mini-arch .vase{position:absolute;left:50%;bottom:12%;transform:translateX(-50%);width:26%;aspect-ratio:1/1.5;border-radius:40% 40% 30% 30%;background:linear-gradient(90deg,#efe9e0,#d6cdbf)}
+.mini-arch .stem{position:absolute;left:50%;bottom:40%;width:2px;height:38%;background:#a59a86;transform-origin:bottom;animation:sway 5s ease-in-out infinite}
+.mini-arch .stem:nth-child(2){transform:rotate(-18deg);animation-delay:-1.5s}
+.mini-arch .stem:nth-child(3){transform:rotate(16deg);height:32%;animation-delay:-3s}
 
-/* 01 */
-.intro-title{text-align:center;margin-bottom:70px}
-.intro-title .big-title{display:inline-block;text-align:left}
-.intro{display:grid;grid-template-columns:1fr 1fr;align-items:start}
-.intro .label{padding-left:16%;padding-top:10px}
-.quote{font-weight:200;font-size:clamp(24px,2.6vw,34px);line-height:1.45;letter-spacing:-.01em;margin-bottom:20px}
+/* 02 audience / 05 screens cards */
+.cards{display:grid;gap:18px}
+.cards.two{grid-template-columns:1fr 1fr}
+.cards.three{grid-template-columns:repeat(3,1fr)}
+.card{position:relative;overflow:hidden;min-height:260px;padding:30px;display:flex;flex-direction:column;justify-content:space-between;color:var(--cream);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.card:hover{transform:translateY(-6px);box-shadow:0 24px 44px rgba(63,70,54,.18)}
+.card.c-olive{background:linear-gradient(140deg,#5d6651,#454c3c)}
+.card.c-dark{background:linear-gradient(140deg,#3a3f32,#2a2e24)}
+.card.c-stone{background:linear-gradient(140deg,#d9d6cc,#c7c3b6);color:var(--olive)}
+.card h3{font-family:var(--serif-ko);font-weight:400;font-size:21px;line-height:1.45;max-width:80%}
+.card .kicker{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;opacity:.75;margin-bottom:10px;display:block}
+.card p{font-size:13.5px;opacity:.82;max-width:80%}
+.card .go{width:40px;height:40px;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;font-size:16px;opacity:.85;transition:transform .35s,background .35s}
+.card:hover .go{transform:rotate(45deg);background:rgba(255,255,255,.12)}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.pills span{font-size:12px;padding:4px 12px;border:1px solid rgba(246,240,232,.35);border-radius:999px}
+.card .deco{position:absolute;right:-30px;bottom:-30px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(255,255,255,.15);transition:transform .6s}
+.card .deco::after{content:"";position:absolute;inset:24px;border-radius:50%;border:1px solid rgba(255,255,255,.12)}
+.card:hover .deco{transform:scale(1.15)}
 
-/* 02 */
-.who-list{list-style:none;margin-top:30px;border-top:1px solid var(--line);max-width:480px}
-.who-list li{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
-.who-list .label{font-size:10.5px;padding-top:4px;letter-spacing:.2em}
-.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.pills span{font-size:12px;padding:3px 12px;border:1px solid var(--line);border-radius:999px;color:var(--ink-2)}
+/* screens mock */
+.card.screen{min-height:340px}
+.mock{position:absolute;right:24px;bottom:-14px;width:52%;aspect-ratio:3/4;background:var(--paper);box-shadow:0 16px 34px rgba(0,0,0,.2);padding:9%;display:flex;flex-direction:column;gap:7%;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.card:hover .mock{transform:translateY(-12px) rotate(-2deg)}
+.mock .b{background:#e3ddd2;flex:none}
+.mock .b.g{background:var(--gold-soft)}
+.mock .row{display:flex;gap:7%;flex:1}.mock .row .b{flex:1}
+.card.screen .txt{max-width:44%}
 
-/* 03 */
-.design-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);margin-top:40px}
-.design-grid > div{padding:24px 24px 26px 0;border-bottom:1px solid var(--line)}
-.design-grid > div:nth-child(odd){border-right:1px solid var(--line)}
-.design-grid > div:nth-child(even){padding-left:24px}
-.design-grid .label{font-size:10px;letter-spacing:.22em;margin-bottom:10px;display:block}
-.mark{font-family:var(--display);font-size:40px;letter-spacing:.12em;line-height:1.15}
-.mark b{color:var(--terra);font-weight:400}
-.swatches{display:flex;gap:8px;margin-bottom:8px}
-.swatches i{width:30px;height:30px;border-radius:50%;border:1px solid var(--line)}
-.menu-list{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--display);font-size:20px;letter-spacing:.1em;text-transform:uppercase}
+/* 03 design tools-like */
+.design{display:grid;grid-template-columns:1fr 1px 1fr;gap:44px;align-items:start}
+.design .divider{background:var(--line);align-self:stretch}
+.tools{display:grid;grid-template-columns:repeat(2,1fr);gap:26px 20px}
+.tool{display:flex;gap:16px;align-items:flex-start}
+.tool .circle{width:52px;height:52px;flex:none;border-radius:50%;background:var(--olive-2);color:var(--cream);display:grid;place-items:center;transition:transform .4s,background .3s}
+.tool:hover .circle{transform:translateY(-4px) rotate(-8deg);background:var(--gold)}
+.tool .circle svg{width:22px;height:22px}
+.tool h4{font-size:11px;letter-spacing:.2em;color:var(--ink-3);font-weight:500;margin-bottom:2px}
+.tool .v{font-size:14.5px;color:var(--ink)}
+.mark{font-family:var(--serif);font-size:34px;color:var(--olive);line-height:1.1}
+.mark b{color:var(--gold);font-weight:400}
+.swatches{display:flex;gap:6px;margin:4px 0 4px}
+.swatches i{width:22px;height:22px;border-radius:50%;border:1px solid var(--line)}
+.menu-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.menu-pills span{font-size:12px;padding:3px 12px;border:1px solid var(--line);border-radius:999px;color:var(--olive)}
 
-/* 04 */
-.feat-head{text-align:right}
-.feat-head .big-title{display:inline-block;text-align:left}
-.features{border-top:1px solid var(--line);margin-top:50px}
-.feat{display:grid;grid-template-columns:90px 200px 1fr auto;gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line);transition:padding .35s ease,background .35s}
-.feat:hover{padding-left:14px;background:rgba(241,242,238,.6)}
-.feat .n{font-family:var(--display);font-size:34px;line-height:1}
-.feat .name{font-size:17px;font-weight:400;letter-spacing:.02em}
-.feat .desc{color:var(--ink-2);font-size:14.5px}
-.prio{font-size:11px;letter-spacing:.2em;white-space:nowrap}
-.prio.high{color:var(--terra)}
-.prio.mid{color:var(--ink-3)}
+/* 04 process */
+.process{position:relative;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.process .progress{position:absolute;left:0;top:-1px;height:2px;width:0;background:var(--gold);transition:width 1.8s cubic-bezier(.4,0,.2,1)}
+.process.in .progress{width:100%}
+.step{position:relative;padding:34px 18px 32px;text-align:center}
+.step + .step{border-left:1px solid var(--line)}
+.step .no{position:absolute;left:14px;top:14px;font-size:11px;color:var(--ink-3);font-weight:500}
+.step .ic{width:58px;height:58px;margin:0 auto 16px;border-radius:50%;background:var(--cream-2);display:grid;place-items:center;color:var(--olive);transition:transform .4s,background .3s,color .3s}
+.step:hover .ic{transform:scale(1.1);background:var(--olive-2);color:var(--cream)}
+.step .ic svg{width:24px;height:24px}
+.step h4{font-family:var(--serif-ko);font-weight:500;font-size:16px;color:var(--olive);margin-bottom:6px}
+.step p{font-size:13px;color:var(--ink-2);line-height:1.6;margin-bottom:12px}
+.prio{display:inline-block;font-size:10.5px;letter-spacing:.14em;padding:3px 12px;border-radius:999px}
+.prio.high{background:var(--olive);color:var(--cream)}
+.prio.mid{border:1px solid var(--line);color:var(--ink-3)}
 
-/* 05 */
-.screens{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;align-items:start}
-.screen:nth-child(2){margin-top:80px}
-.screen:nth-child(3){margin-top:160px}
-.screen .canvas{display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
-.screen:hover .canvas{transform:scale(.98)}
-.mock{width:66%;aspect-ratio:3/4;background:rgba(241,242,238,.92);box-shadow:0 20px 40px rgba(80,55,30,.18);padding:10%;display:flex;flex-direction:column;gap:7%}
-.mock .b{background:#dcd6cc;flex:none}
-.mock .b.accent{background:var(--terra-soft)}
-.mock .row{display:flex;gap:7%;flex:1}
-.mock .row .b{flex:1}
-.screen .label{font-size:10.5px}
-.screen h3{font-size:19px;font-weight:300;margin:6px 0 2px}
+/* 06 goal band */
+.goal{margin-top:110px;background:var(--olive-2);color:var(--cream);position:relative;overflow:hidden}
+.goal .wrap{display:grid;grid-template-columns:1.3fr 1px 1fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:72px}
+.goal .divider{background:rgba(246,240,232,.3);align-self:stretch}
+.goal .q{display:flex;gap:18px}
+.goal .q .mk{font-family:var(--serif);font-size:72px;line-height:.8;color:var(--gold-soft)}
+.goal h2{font-family:var(--serif-ko);font-weight:400;font-size:clamp(19px,1.9vw,24px);line-height:1.7}
+.goal h2 .hl{color:var(--gold-soft)}
+.goal .by{display:block;margin-top:16px;font-size:11px;letter-spacing:.2em;color:rgba(246,240,232,.75)}
+.goal .cta-side{display:flex;gap:22px;align-items:center}
+.goal .ring{width:84px;height:84px;flex:none;border-radius:50%;border:1px solid var(--gold-soft);display:grid;place-items:center;color:var(--gold-soft);position:relative}
+.goal .ring::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(230,213,184,.4);animation:pulse 2.8s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.9);opacity:1}100%{transform:scale(1.35);opacity:0}}
+.goal .ring svg{width:30px;height:30px}
+.goal h3{font-family:var(--serif);font-weight:400;font-size:clamp(20px,2vw,26px);letter-spacing:.06em;line-height:1.25;text-transform:uppercase}
+.goal small{display:block;font-size:13px;color:rgba(246,240,232,.8);margin:6px 0 16px}
+.goal .btn{background:var(--cream);color:var(--olive)}
+.goal .btn:hover{background:var(--gold);color:var(--cream)}
 
-/* 06 */
-.goal{padding:160px 0 130px;text-align:center}
-.goal .num{margin-bottom:8px}
-.goal .label{display:block;margin-bottom:42px}
-.goal h2{font-weight:200;font-size:clamp(24px,3.2vw,42px);line-height:1.5;max-width:900px;margin:0 auto;letter-spacing:-.01em}
-.goal .btn{margin-top:50px}
-
-footer{border-top:1px solid var(--line);padding:30px 0 40px}
-footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-footer small{font-size:10.5px;letter-spacing:.24em;color:var(--ink-3);text-transform:uppercase}
+footer{background:var(--cream-2)}
+footer .top{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-top:34px;padding-bottom:34px;flex-wrap:wrap}
+footer .brand{display:flex;align-items:center;gap:20px}
+footer .brand .mono{font-size:40px}
+footer .brand p{font-size:11px;letter-spacing:.16em;color:var(--ink-2);border-left:1px solid var(--line);padding-left:20px;line-height:1.7;text-transform:uppercase}
+footer .contact{font-size:13px;color:var(--ink-2)}
+footer .bottom{background:var(--olive);color:rgba(246,240,232,.75);font-size:10.5px;letter-spacing:.16em}
+footer .bottom .wrap{display:flex;justify-content:space-between;padding-top:14px;padding-bottom:14px;gap:12px;flex-wrap:wrap}
 
 /* ---------- Reveal ---------- */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
 .reveal.in{opacity:1;transform:none}
+.fade{opacity:0;animation:fadeUp 1s ease forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
 @media (prefers-reduced-motion:reduce){
-  .reveal{opacity:1;transform:none;transition:none}
-  .track,.chip{animation:none}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal,.fade{opacity:1;transform:none}
+  .hero h1 .ch{transform:none}
+  .arch-line path{stroke-dashoffset:0}
+  .process .progress{width:100%}
 }
 
 /* ---------- Responsive ---------- */
-@media(max-width:960px){
-  .menu{display:none}
-  .hero-grid,.split,.intro{grid-template-columns:1fr}
-  .hero-text{padding:30px 0 50px}
-  .visual{min-height:420px}
-  .pad,.split.rev .pad{padding:40px 0 0}
-  .split.rev .canvas-wrap{order:-1}
-  .canvas-wrap .canvas{aspect-ratio:4/3}
-  .intro .label{padding:0 0 20px}
-  .intro-title{text-align:left;margin-bottom:40px}
-  .screens{grid-template-columns:1fr 1fr}
-  .screen:nth-child(3){margin-top:0}
-  .feat{grid-template-columns:60px 1fr auto;gap:4px 16px}
-  .feat .desc{grid-column:2 / -1;grid-row:2}
+@media(max-width:980px){
+  .menu,.nav-right .rule{display:none}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-text{padding-bottom:20px}
+  .visual{max-width:360px;margin:30px auto 40px}
+  .leaves{display:none}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3)::before{display:none}
+  .about{grid-template-columns:1fr 1fr}
+  .about .mini-arch{display:none}
+  .design{grid-template-columns:1fr}
+  .design .divider{display:none}
+  .process{grid-template-columns:1fr 1fr 1fr}
+  .step:nth-child(4){border-left:0}
+  .cards.three{grid-template-columns:1fr 1fr}
+  .goal .wrap{grid-template-columns:1fr;gap:36px}
+  .goal .divider{display:none}
 }
-@media(max-width:600px){
+@media(max-width:620px){
   .wrap{padding:0 20px}
-  .nav{padding:16px 20px}
-  .nav .cta{padding:8px 14px;font-size:10px}
-  .hero{padding-top:90px}
-  .block{padding-top:96px}
-  .design-grid{grid-template-columns:1fr}
-  .design-grid > div:nth-child(odd){border-right:0}
-  .design-grid > div:nth-child(even){padding-left:0}
-  .who-list li{grid-template-columns:1fr;gap:4px}
-  .screens{grid-template-columns:1fr;gap:40px}
-  .screen:nth-child(2){margin-top:0}
-  .screen .canvas{aspect-ratio:4/3}
-  .mock{width:42%}
+  .hero{padding-top:100px}
+  .badge{right:-14px;width:104px;height:104px}
+  .badge text{font-size:9px}
+  .chip.c1{left:-8px}
   .chip.c2{display:none}
-  .goal{padding:110px 0 96px}
+  .chip.c3{right:-8px}
+  .stat{padding:20px 18px;gap:12px}
+  .stat b{font-size:26px}
+  .about{grid-template-columns:1fr;gap:24px}
+  .about .body{padding-left:0;border-left:0;padding-top:20px;border-top:1px solid var(--line)}
+  .cards.two,.cards.three,.tools{grid-template-columns:1fr}
+  .process{grid-template-columns:1fr}
+  .step,.step + .step{border-left:0;border-top:1px solid var(--line);display:grid;grid-template-columns:58px 1fr;column-gap:18px;text-align:left;padding:22px 0 22px 0}
+  .step:first-of-type{border-top:0}
+  .step .no{position:static;grid-column:1 / -1;margin-bottom:6px}
+  .step .ic{grid-row:2 / 5;margin:0}
+  .step p{margin-bottom:8px}
+  .step .prio{justify-self:start}
+  .block{padding-top:84px}
 }
 </style>
 </head>
 <body>
 
-<svg class="cracks" viewBox="0 0 1000 6000" preserveAspectRatio="none" aria-hidden="true">
-  <path d="M40 300 C 70 420, 20 520, 90 640 S 60 860, 140 980 S 110 1180, 60 1320"/>
-  <path d="M90 640 C 140 660, 190 700, 230 760"/>
-  <path d="M930 1650 C 880 1760, 960 1880, 900 2010 S 940 2240, 870 2380"/>
-  <path d="M900 2010 C 850 2030, 800 2070, 770 2130"/>
-  <path d="M60 2900 C 120 3010, 40 3150, 110 3300 S 70 3520, 150 3660"/>
-  <path d="M110 3300 C 170 3320, 210 3370, 260 3390"/>
-  <path d="M950 4200 C 890 4330, 970 4470, 910 4620 S 960 4840, 880 4990"/>
-  <path d="M480 5250 C 520 5340, 450 5440, 520 5560"/>
-</svg>
-
 <nav class="nav" id="nav">
-  <a href="#top" class="logo">INHAE<b>.</b></a>
-  <ul class="menu">
-    <li><a href="#background">BACKGROUND</a></li>
-    <li><a href="#audience">AUDIENCE</a></li>
-    <li><a href="#design">DESIGN</a></li>
-    <li><a href="#features">FEATURES</a></li>
-    <li><a href="#screens">SCREENS</a></li>
-  </ul>
-  <a href="#goal" class="cta">GOAL ›</a>
+  <div class="wrap">
+    <a href="#top" class="mono">I</a>
+    <ul class="menu">
+      <li><a href="#background">BACKGROUND</a></li>
+      <li><a href="#audience">AUDIENCE</a></li>
+      <li><a href="#design">DESIGN</a></li>
+      <li><a href="#features">FEATURES</a></li>
+      <li><a href="#screens">SCREENS</a></li>
+    </ul>
+    <div class="nav-right">
+      <span class="rule"></span>
+      <a href="#goal" class="cta">GOAL <span class="star">✦</span></a>
+    </div>
+  </div>
 </nav>
 
-<header class="hero wrap" id="top">
-  <div class="hero-grid">
-    <div class="hero-text">
-      <div class="label">Portfolio Plan · 기획서</div>
-      <h1 class="display"><span>Inhae<b class="hl" style="font-weight:400">.</b></span><span>Portfolio</span><span>Plan</span></h1>
-      <div class="ko-name">김인해 포트폴리오 기획서</div>
-      <p>그동안 해온 작업을 한곳에 모아 보여주는 공간. 한 번 만들어두고 계속 채워나갈 나만의 사이트를 기획합니다.</p>
-      <div class="hero-bottom">
-        <span class="year">2026</span>
-        <a href="#background" class="btn">기획서 보기 ›</a>
-        <a href="#features" class="btn ghost">핵심 기능 ›</a>
+<header class="hero" id="top">
+  <svg class="leaves" viewBox="0 0 160 360" aria-hidden="true">
+    <path d="M150 0 C 120 40, 90 60, 40 70 C 80 80, 120 60, 150 30Z"/>
+    <path d="M155 60 C 130 110, 100 120, 50 140 C 100 150, 135 120, 155 90Z"/>
+    <path d="M150 130 C 120 170, 95 190, 60 220 C 105 220, 140 190, 152 160Z"/>
+    <path d="M156 200 C 130 250, 110 270, 70 300 C 120 300, 148 265, 156 235Z"/>
+    <path d="M150 270 C 130 310, 120 330, 95 355 C 135 350, 150 320, 152 295Z"/>
+  </svg>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hello fade" style="animation-delay:.1s">Hello, I'm</div>
+        <h1 aria-label="KIM INHAE">
+          <span class="line" data-split="KIM" data-delay="0.25"></span>
+          <span class="line" data-split="INHAE." data-delay="0.5"></span>
+        </h1>
+        <div class="eyebrow role fade" style="animation-delay:1.2s">Portfolio Plan &nbsp;·&nbsp; 포트폴리오 기획서</div>
+        <p class="fade" style="animation-delay:1.35s">그동안 해온 작업을 한곳에 모아 보여주는 공간. 한 번 만들어두고 계속 채워나갈 나만의 사이트를 기획합니다.</p>
+        <div class="btns fade" style="animation-delay:1.5s">
+          <a href="#background" class="btn solid">기획서 보기 <span class="arr">→</span></a>
+          <a href="#features" class="btn line">핵심 기능 <span class="arr">→</span></a>
+        </div>
+      </div>
+
+      <div class="visual" id="visual">
+        <svg class="arch-line" viewBox="0 0 476 590" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M1 590 V 238 A 237 237 0 0 1 475 238 V 590"/>
+        </svg>
+        <div class="arch">
+          <div class="initial">I.</div>
+          <div class="name-ko">김인해</div>
+        </div>
+        <div class="badge" aria-hidden="true">
+          <svg viewBox="0 0 132 132">
+            <defs><path id="circle" d="M66,66 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0"/></defs>
+            <text><textPath href="#circle">PORTFOLIO · PLAN · 2026 · INHAE ·</textPath></text>
+          </svg>
+          <div class="core"><span class="star">✦</span></div>
+        </div>
+        <div class="chip c1">👋 안녕하세요, 김인해입니다</div>
+        <div class="chip c2">🗂️ Work · About · Contact</div>
+        <div class="chip c3">✨ Minimal &amp; Clean</div>
       </div>
     </div>
-    <div class="visual reveal">
-      <div class="chip c1"><span>👋</span> 안녕하세요, 김인해입니다</div>
-      <div class="chip c2"><span>🗂️</span> Work · About · Contact</div>
-      <div class="chip c3"><span>✨</span> Minimal &amp; Clean</div>
-      <div class="big">INHAE.</div>
+
+    <div class="stats reveal">
+      <div class="stat">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2v6M12 16v6M2 12h6M16 12h6M12 8l1.5 2.5L16 12l-2.5 1.5L12 16l-1.5-2.5L8 12l2.5-1.5z"/></svg>
+        <div><b data-count="4">0</b><span>필수 기능</span></div>
+      </div>
+      <div class="stat">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M3 8h18M8 21h8"/></svg>
+        <div><b data-count="3">0</b><span>필요한 화면</span></div>
+      </div>
+      <div class="stat">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        <div><b data-count="4">0</b><span>메뉴 구성</span></div>
+      </div>
+      <div class="stat">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+        <div><b data-count="2026">0</b><span>프로젝트 연도</span></div>
+      </div>
     </div>
   </div>
 </header>
@@ -277,164 +376,232 @@ footer small{font-size:10.5px;letter-spacing:.24em;color:var(--ink-3);text-trans
 
   <!-- 01 기획 배경 -->
   <section class="block wrap" id="background">
-    <div class="intro-title reveal">
-      <h2 class="display big-title"><span>Why</span><span>This</span><span>Space</span></h2>
+    <div class="sec-head reveal">
+      <div><div class="eyebrow">01 · Background</div><h2>Why This Space <span class="star">✦</span></h2></div>
+      <div class="ko">기획 배경</div>
     </div>
-    <div class="intro reveal">
-      <div class="label">01 — 기획 배경</div>
-      <div>
-        <p class="quote">"뭘 할 수 있는지 <span class="hl">보여줄 수 있어?</span>"</p>
-        <p class="body">그동안 만들거나 해온 것들이 여기저기 흩어져 있어서, 누군가 이렇게 물으면 바로 보여줄 곳이 없었습니다. 한 번 만들어두면 계속 채워나갈 수 있는 나만의 공간을 만들고 싶습니다.</p>
+    <div class="about">
+      <p class="quote reveal">뭘 할 수 있는지<br><span class="hl">보여줄 수 있어?</span></p>
+      <div class="body reveal" style="--d:.15s">
+        <p>그동안 만들거나 해온 것들이 여기저기 흩어져 있어서, 누군가 이렇게 물으면 바로 보여줄 곳이 없었습니다. 한 번 만들어두면 계속 채워나갈 수 있는 나만의 공간을 만들고 싶습니다.</p>
+        <span class="sign">Inhae Kim</span>
+      </div>
+      <div class="mini-arch reveal" style="--d:.3s" aria-hidden="true">
+        <span class="stem"></span><span class="stem"></span><span class="stem"></span>
+        <span class="vase"></span>
       </div>
     </div>
   </section>
 
   <!-- 02 누가 보나요 -->
   <section class="block wrap" id="audience">
-    <div class="split">
-      <div class="canvas-wrap reveal"><div class="canvas terra"><span class="stamp">Audience</span></div></div>
-      <div class="pad reveal" style="align-self:center">
-        <div class="num">02</div>
-        <div class="label">Audience · 누가 보나요</div>
-        <ul class="who-list">
-          <li>
-            <span class="label">보는 사람</span>
-            <div>
-              <p>내가 뭘 할 수 있는 사람인지 궁금한 사람</p>
-              <div class="pills"><span>채용 담당자</span><span>같이 작업하고 싶은 사람</span><span>지인</span></div>
-            </div>
-          </li>
-          <li>
-            <span class="label">보여주고 싶은 것</span>
-            <p>그동안 해온 작업물과, 어떤 걸 할 수 있는 사람인지</p>
-          </li>
-        </ul>
+    <div class="sec-head reveal">
+      <div><div class="eyebrow">02 · Audience</div><h2>Who Visits <span class="star">✦</span></h2></div>
+      <div class="ko">누가 보나요</div>
+    </div>
+    <div class="cards two">
+      <div class="card c-olive reveal">
+        <div>
+          <span class="kicker">보는 사람</span>
+          <h3>내가 뭘 할 수 있는 사람인지 궁금한 사람</h3>
+          <div class="pills"><span>채용 담당자</span><span>같이 작업하고 싶은 사람</span><span>지인</span></div>
+        </div>
+        <span class="go">↗</span>
+        <span class="deco"></span>
+      </div>
+      <div class="card c-dark reveal" style="--d:.15s">
+        <div>
+          <span class="kicker">보여주고 싶은 것</span>
+          <h3>그동안 해온 작업물과, 어떤 걸 할 수 있는 사람인지</h3>
+        </div>
+        <span class="go">↗</span>
+        <span class="deco"></span>
       </div>
     </div>
   </section>
 
   <!-- 03 디자인 방향 -->
   <section class="block wrap" id="design">
-    <div class="split rev">
-      <div class="pad reveal" style="align-self:center">
-        <div class="num">03</div>
-        <div class="label">Design · 디자인 방향</div>
-        <div class="design-grid">
-          <div>
-            <span class="label">사이트명 / 로고</span>
-            <div class="mark">INHAE<b>.</b></div>
-            <p class="small">이름 + 마침표. 심플하게 텍스트로만</p>
-          </div>
-          <div>
-            <span class="label">메인 컬러</span>
-            <div class="swatches"><i style="background:#1a1a1a"></i><i style="background:#f2c94c"></i></div>
-            <p class="small">차콜 그레이(#1a1a1a) + 포인트로 옐로우 한 가지만</p>
-          </div>
-          <div>
-            <span class="label">메뉴 구성</span>
-            <div class="menu-list"><span>Home</span><span>About</span><span>Work</span><span>Contact</span></div>
-            <p class="small">4개, 심플하게</p>
-          </div>
-          <div>
-            <span class="label">참고 사이트</span>
-            <p>Day4 스타일 중 <span class="hl">"미니멀"</span></p>
-            <p class="small">여백 넉넉하고 사진이 크게 보이는 쪽</p>
-          </div>
+    <div class="sec-head reveal">
+      <div><div class="eyebrow">03 · Design</div><h2>Design Direction <span class="star">✦</span></h2></div>
+      <div class="ko">디자인 방향</div>
+    </div>
+    <div class="design">
+      <div class="tools">
+        <div class="tool reveal">
+          <span class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 19V5h4a4 4 0 0 1 0 8H5"/><path d="M15 19l4-14"/></svg></span>
+          <div><h4>사이트명 / 로고</h4><div class="mark">INHAE<b>.</b></div><div class="v" style="font-size:13px;color:var(--ink-3)">이름 + 마침표, 텍스트로만</div></div>
+        </div>
+        <div class="tool reveal" style="--d:.1s">
+          <span class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><circle cx="8.5" cy="10" r="1.2"/><circle cx="12" cy="7.5" r="1.2"/><circle cx="15.5" cy="10" r="1.2"/><path d="M12 21a3 3 0 0 1 0-6h2"/></svg></span>
+          <div><h4>메인 컬러</h4><div class="swatches"><i style="background:#1a1a1a"></i><i style="background:#f2c94c"></i></div><div class="v">차콜 그레이(#1a1a1a) + 포인트 옐로우</div></div>
+        </div>
+        <div class="tool reveal" style="--d:.2s">
+          <span class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>
+          <div><h4>메뉴 구성</h4><div class="menu-pills"><span>Home</span><span>About</span><span>Work</span><span>Contact</span></div><div class="v" style="font-size:13px;color:var(--ink-3);margin-top:4px">4개, 심플하게</div></div>
+        </div>
+        <div class="tool reveal" style="--d:.3s">
+          <span class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></span>
+          <div><h4>참고 사이트</h4><div class="v">Day4 스타일 중 <span class="hl">"미니멀"</span></div><div class="v" style="font-size:13px;color:var(--ink-3)">여백 넉넉하고 사진이 크게 보이는 쪽</div></div>
         </div>
       </div>
-      <div class="canvas-wrap reveal"><div class="canvas"><span class="stamp">Design</span></div></div>
+      <span class="divider"></span>
+      <div class="reveal" style="--d:.2s">
+        <div class="eyebrow" style="margin-bottom:14px">Mood</div>
+        <p style="font-family:var(--serif-ko);font-size:20px;line-height:1.7;color:var(--olive)">여백은 넉넉하게, 색은 절제하고, 작업물이 가장 잘 보이도록.</p>
+        <span class="sign">simple &amp; clean</span>
+      </div>
     </div>
   </section>
 
   <!-- 04 핵심 기능 -->
   <section class="block wrap" id="features">
-    <div class="feat-head reveal">
-      <h2 class="display big-title"><span>Key</span><span>Features</span></h2>
-      <div class="ko-h">04 — 핵심 기능</div>
+    <div class="sec-head reveal">
+      <div><div class="eyebrow">04 · Features</div><h2>Key Features <span class="star">✦</span></h2></div>
+      <div class="ko">핵심 기능</div>
     </div>
-    <div class="features reveal">
-      <div class="feat"><span class="n">01</span><span class="name">자기소개</span><span class="desc">이름과 간단한 소개 문구가 보이는 영역</span><span class="prio high">필수</span></div>
-      <div class="feat"><span class="n">02</span><span class="name">작업물 목록</span><span class="desc">해온 작업들을 카드 형태로 쭉 보여주기</span><span class="prio high">필수</span></div>
-      <div class="feat"><span class="n">03</span><span class="name">작업물 상세</span><span class="desc">카드를 누르면 그 작업에 대해 더 자세히 보여주기</span><span class="prio high">필수</span></div>
-      <div class="feat"><span class="n">04</span><span class="name">연락 방법</span><span class="desc">이메일이나 연락 수단을 안내</span><span class="prio high">필수</span></div>
-      <div class="feat"><span class="n">05</span><span class="name">기록 게시판</span><span class="desc">작업하면서 남긴 짧은 기록을 올리는 공간</span><span class="prio mid">나중에</span></div>
+    <div class="process reveal" id="process">
+      <span class="progress"></span>
+      <div class="step">
+        <span class="no">01</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+        <h4>자기소개</h4><p>이름과 간단한 소개 문구가 보이는 영역</p><span class="prio high">필수</span>
+      </div>
+      <div class="step">
+        <span class="no">02</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+        <h4>작업물 목록</h4><p>해온 작업들을 카드 형태로 쭉 보여주기</p><span class="prio high">필수</span>
+      </div>
+      <div class="step">
+        <span class="no">03</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 14l5-4 4 3 3-2 6 4"/></svg></div>
+        <h4>작업물 상세</h4><p>카드를 누르면 그 작업에 대해 더 자세히 보여주기</p><span class="prio high">필수</span>
+      </div>
+      <div class="step">
+        <span class="no">04</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg></div>
+        <h4>연락 방법</h4><p>이메일이나 연락 수단을 안내</p><span class="prio high">필수</span>
+      </div>
+      <div class="step">
+        <span class="no">05</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/></svg></div>
+        <h4>기록 게시판</h4><p>작업하면서 남긴 짧은 기록을 올리는 공간</p><span class="prio mid">나중에</span>
+      </div>
     </div>
   </section>
 
   <!-- 05 필요한 화면 -->
   <section class="block wrap" id="screens">
-    <div class="reveal">
-      <h2 class="display big-title"><span>Screens</span></h2>
-      <div class="ko-h">05 — 필요한 화면</div>
+    <div class="sec-head reveal">
+      <div><div class="eyebrow">05 · Screens</div><h2>Selected Screens <span class="star">✦</span></h2></div>
+      <div class="ko">필요한 화면</div>
     </div>
-    <div class="screens">
-      <div class="screen reveal">
-        <div class="canvas">
-          <div class="mock">
-            <div class="b accent" style="height:30%"></div>
-            <div class="row"><div class="b"></div><div class="b"></div><div class="b"></div></div>
-          </div>
-        </div>
-        <div class="label">i. Main</div>
-        <h3>메인</h3>
-        <p class="small">소개와 작업물 목록이 함께 보이는 첫 화면</p>
+    <div class="cards three">
+      <div class="card screen c-olive reveal">
+        <div class="txt"><span class="kicker">i. Main</span><h3>메인</h3><p>소개와 작업물 목록이 함께 보이는 첫 화면</p></div>
+        <span class="go">↗</span>
+        <div class="mock"><div class="b g" style="height:30%"></div><div class="row"><div class="b"></div><div class="b"></div><div class="b"></div></div></div>
       </div>
-      <div class="screen reveal">
-        <div class="canvas terra">
-          <div class="mock">
-            <div class="b accent" style="height:46%"></div>
-            <div class="b" style="height:7%;width:70%"></div>
-            <div class="b" style="height:5%"></div>
-            <div class="b" style="height:5%;width:55%"></div>
-          </div>
-        </div>
-        <div class="label">ii. Detail</div>
-        <h3>작업물 상세</h3>
-        <p class="small">하나를 눌렀을 때 나오는 자세한 화면</p>
+      <div class="card screen c-dark reveal" style="--d:.12s">
+        <div class="txt"><span class="kicker">ii. Detail</span><h3>작업물 상세</h3><p>하나를 눌렀을 때 나오는 자세한 화면</p></div>
+        <span class="go">↗</span>
+        <div class="mock"><div class="b g" style="height:44%"></div><div class="b" style="height:7%;width:70%"></div><div class="b" style="height:5%"></div><div class="b" style="height:5%;width:55%"></div></div>
       </div>
-      <div class="screen reveal">
-        <div class="canvas">
-          <div class="mock" style="justify-content:center;align-items:center">
-            <div class="b" style="height:6%;width:55%"></div>
-            <div class="b" style="height:12%;width:85%;background:#fff"></div>
-            <div class="b" style="height:12%;width:85%;background:#fff"></div>
-            <div class="b accent" style="height:9%;width:40%;border-radius:999px"></div>
-          </div>
-        </div>
-        <div class="label">iii. Contact</div>
-        <h3>연락</h3>
-        <p class="small">연락 방법을 남기는 화면</p>
+      <div class="card screen c-stone reveal" style="--d:.24s">
+        <div class="txt"><span class="kicker">iii. Contact</span><h3>연락</h3><p>연락 방법을 남기는 화면</p></div>
+        <span class="go">↗</span>
+        <div class="mock" style="justify-content:center;align-items:center"><div class="b" style="height:6%;width:55%"></div><div class="b" style="height:12%;width:85%"></div><div class="b" style="height:12%;width:85%"></div><div class="b g" style="height:9%;width:40%;border-radius:999px"></div></div>
       </div>
     </div>
   </section>
 
   <!-- 06 얻고 싶은 것 -->
-  <section class="goal wrap reveal" id="goal">
-    <div class="num">06</div>
-    <span class="label">Goal · 얻고 싶은 것</span>
-    <h2>완벽하게 만드는 게 목표가 아니라, 내가 직접 기획하고 만든 화면이 <span class="hl">실제로 인터넷에 떠 있는 걸</span> 경험하는 게 목표입니다.</h2>
-    <a href="#top" class="btn">맨 위로 ↑</a>
+  <section class="goal" id="goal">
+    <div class="wrap">
+      <div class="q reveal">
+        <span class="mk">“</span>
+        <div>
+          <h2>완벽하게 만드는 게 목표가 아니라, 내가 직접 기획하고 만든 화면이 <span class="hl">실제로 인터넷에 떠 있는 걸</span> 경험하는 게 목표입니다.</h2>
+          <span class="by">— 06 · GOAL · 얻고 싶은 것</span>
+        </div>
+      </div>
+      <span class="divider"></span>
+      <div class="cta-side reveal" style="--d:.15s">
+        <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg></span>
+        <div>
+          <h3>Let's Build<br>Something Real</h3>
+          <small>기획에서 끝나지 않고, 직접 만들어 띄워보기</small>
+          <a href="#top" class="btn">맨 위로 <span class="arr">↑</span></a>
+        </div>
+      </div>
+    </div>
   </section>
 
 </main>
 
 <footer>
-  <div class="wrap">
-    <span class="logo">INHAE<b>.</b></span>
-    <small>© 2026 김인해 · Portfolio Plan</small>
+  <div class="wrap top">
+    <div class="brand"><span class="mono">I</span><p>Portfolio plan by<br>김인해 · Inhae Kim</p></div>
+    <div class="contact">Home · About · Work · Contact</div>
   </div>
+  <div class="bottom"><div class="wrap"><span>© 2026 INHAE. ALL RIGHTS RESERVED.</span><span>PORTFOLIO PLAN</span></div></div>
 </footer>
 
 <script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // split hero title into letters for staggered rise
+  document.querySelectorAll('[data-split]').forEach((line) => {
+    const base = parseFloat(line.dataset.delay) || 0;
+    [...line.dataset.split].forEach((c, i) => {
+      const s = document.createElement('span');
+      s.className = 'ch' + (c === '.' ? ' accent' : '');
+      s.textContent = c;
+      s.style.animationDelay = (base + i * 0.06) + 's';
+      s.setAttribute('aria-hidden', 'true');
+      line.appendChild(s);
+    });
+  });
+
+  // count-up numbers
+  const countUp = (el) => {
+    const target = +el.dataset.count;
+    if (reduce) { el.textContent = target; return; }
+    const start = target > 100 ? target - 40 : 0;
+    const t0 = performance.now(), dur = 1400;
+    const tick = (t) => {
+      const p = Math.min((t - t0) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(start + (target - start) * eased);
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  // scroll reveal
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      e.target.querySelectorAll('[data-count]').forEach(countUp);
+      io.unobserve(e.target);
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
+  // nav background on scroll
   const nav = document.getElementById('nav');
   addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 10), { passive: true });
+
+  // gentle parallax tilt on the arch
+  const visual = document.getElementById('visual');
+  if (!reduce && matchMedia('(hover:hover)').matches) {
+    addEventListener('mousemove', (e) => {
+      const x = (e.clientX / innerWidth - 0.5) * 2;
+      const y = (e.clientY / innerHeight - 0.5) * 2;
+      visual.style.transform = `translate(${x * -8}px, ${y * -8}px)`;
+    });
+  }
 </script>
 
 </body>
