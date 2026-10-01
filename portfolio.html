@@ -4,136 +4,438 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>김인해 포트폴리오 기획서</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy-950:#080f22; --navy-900:#0d1730; --accent-deep:#425a8f; --accent:#8a9bc4;
-  --paper:#f4f5f8; --paper-2:#eaedf3; --ink:#12172a; --ink-soft:#525a72; --line:#d8dce6;
-  --green:#2f7a49; --green-bg:#e4f3e8;
+  --bg:#e9ebe6; --bg-2:#f1f2ee;
+  --canvas-1:#e6d6c0; --canvas-2:#cdb394; --canvas-3:#b8987a;
+  --terra:#b0532f; --terra-soft:#e9cdbd;
+  --ink:#2b2b28; --ink-2:#55554f; --ink-3:#8b8b83; --line:rgba(43,43,40,.16);
+  --sans:'Pretendard Variable',Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --display:'Italiana',serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Pretendard',-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--paper);color:var(--ink);line-height:1.75;font-size:16px}
-.wrap{max-width:760px;margin:0 auto;padding:0 24px}
-.hero{background:linear-gradient(180deg,var(--navy-950),var(--navy-900) 75%);color:#fff;padding:48px 0 32px}
-.hero .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
-.hero h1{font-size:clamp(22px,3.6vw,28px);font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
-.hero p{color:#aeb7d1;font-size:14px;max-width:560px}
-.doc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:40px 44px;margin:-18px 0 36px;box-shadow:0 10px 26px rgba(13,23,48,.08)}
-.doc .doctitle{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:6px}
-.doc h2{font-size:24px;font-weight:800;color:var(--navy-900);margin-bottom:4px}
-.doc .subtitle{font-size:14.5px;color:var(--ink-soft);margin-bottom:28px;font-style:italic}
-.sec{margin-bottom:26px}
-.sec:last-child{margin-bottom:0}
-.sec h3{font-size:13px;font-weight:800;color:var(--navy-900);letter-spacing:.03em;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--navy-900);display:inline-block}
-.sec p{font-size:14.5px;color:var(--ink);margin-bottom:8px}
-.sec p:last-child{margin-bottom:0}
-.sec ul{padding-left:20px;font-size:14.5px;color:var(--ink)}
-.sec li{margin-bottom:6px}
-.sec li:last-child{margin-bottom:0}
-.twocol{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.minicard{background:var(--paper-2);border-radius:8px;padding:14px 16px}
-.minicard .lbl{font-size:11px;font-weight:800;color:var(--accent-deep);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
-.minicard .val{font-size:14px;color:var(--ink)}
-.feattable{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:4px}
-.feattable th{text-align:left;font-size:11px;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.03em;padding:8px 10px;border-bottom:2px solid var(--line)}
-.feattable td{padding:10px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-.feattable tr:last-child td{border-bottom:none}
-.feattable .fname{font-weight:700;color:var(--navy-900);white-space:nowrap}
-.prio{display:inline-block;font-size:10.5px;font-weight:800;padding:2px 8px;border-radius:10px}
-.prio.high{background:#fdecec;color:#c0392b}
-.prio.mid{background:#fff8e9;color:#8a6416}
-.howto{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px 32px;margin-bottom:60px}
-.howto h2{font-size:17px;font-weight:800;color:var(--navy-900);margin-bottom:14px}
-.howto ol{padding-left:20px;font-size:14px;color:var(--ink)}
-.howto li{margin-bottom:10px}
-.howto li b{color:var(--navy-900)}
-@media(max-width:600px){.doc{padding:28px 24px}.twocol{grid-template-columns:1fr}}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:300;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.8;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;position:relative;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+.label{font-size:11px;letter-spacing:.32em;text-transform:uppercase;font-weight:400;color:var(--ink-2)}
+.display{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.02em}
+.hl{color:var(--terra)}
+
+/* organic hairlines */
+.cracks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.cracks path{fill:none;stroke:#fff;stroke-width:1.2;opacity:.9}
+main,header,.marquee,footer{position:relative;z-index:1}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 40px;
+  background:rgba(233,235,230,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+.nav.scrolled{border-bottom-color:var(--line)}
+.logo{font-family:var(--display);font-size:22px;letter-spacing:.12em}
+.logo b{color:var(--terra);font-weight:400}
+.menu{display:flex;gap:30px;list-style:none}
+.menu a{font-size:11.5px;letter-spacing:.24em;color:var(--ink-2);position:relative;padding:4px 0;transition:color .2s}
+.menu a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--ink);transition:right .3s}
+.menu a:hover{color:var(--ink)}
+.menu a:hover::after{right:0}
+.nav .cta{font-size:11px;letter-spacing:.24em;padding:10px 20px;border:1px solid var(--ink);border-radius:999px;transition:background .25s,color .25s}
+.nav .cta:hover{background:var(--ink);color:var(--bg)}
+
+/* ---------- Hero ---------- */
+.hero{padding-top:110px}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:min(84vh,760px)}
+.hero-text{padding:60px 48px 48px 0;display:flex;flex-direction:column;justify-content:center}
+.hero-text .label{margin-bottom:34px}
+.hero h1{font-size:clamp(54px,7.4vw,112px)}
+.hero h1 > span{display:block}
+.hero h1 > span:nth-child(2){padding-left:.9em}
+.hero h1 > span:nth-child(3){padding-left:1.8em}
+.ko-name{margin:30px 0 8px 1.2em;font-size:clamp(17px,1.5vw,20px);font-weight:300;letter-spacing:.06em}
+.hero-text p{color:var(--ink-2);max-width:380px;margin-left:1.4em;font-size:14.5px}
+.hero-bottom{display:flex;align-items:center;gap:28px;margin:44px 0 0 1.4em;flex-wrap:wrap}
+.hero-bottom .year{font-size:11px;letter-spacing:.24em;color:var(--ink-3)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;padding:6px 0;border-bottom:1px solid var(--ink);transition:gap .25s,color .25s,border-color .25s}
+.btn:hover{gap:16px;color:var(--terra);border-color:var(--terra)}
+.btn.ghost{border-bottom-color:transparent;color:var(--ink-2)}
+
+/* canvas panel (hero visual) */
+.visual{position:relative;overflow:hidden;min-height:440px;
+  background:
+    radial-gradient(60% 45% at 30% 25%,rgba(255,255,255,.55) 0%,transparent 70%),
+    radial-gradient(50% 50% at 75% 80%,rgba(176,83,47,.28) 0%,transparent 70%),
+    linear-gradient(160deg,var(--canvas-1) 0%,var(--canvas-2) 60%,var(--canvas-3) 100%)}
+.visual::before{content:"";position:absolute;left:12%;right:12%;top:12%;bottom:24%;
+  background:linear-gradient(170deg,rgba(255,255,255,.35),rgba(255,255,255,.08));box-shadow:0 30px 60px rgba(80,55,30,.18)}
+.visual::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:34%;height:24%;background:#efe9df;box-shadow:inset 0 10px 20px rgba(0,0,0,.05)}
+.visual .big{position:absolute;left:0;right:0;top:44%;text-align:center;font-family:var(--display);font-size:clamp(48px,6vw,88px);letter-spacing:.14em;color:rgba(255,255,255,.8);z-index:1}
+.chip{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;padding:10px 16px;background:rgba(241,242,238,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:12px;letter-spacing:.06em;font-weight:400;animation:float 6s ease-in-out infinite}
+.chip span{font-size:15px}
+.chip.c1{top:5%;left:6%}
+.chip.c2{top:80%;left:5%;animation-delay:-2s}
+.chip.c3{top:20%;right:5%;animation-delay:-4s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* ---------- Marquee ---------- */
+.marquee{overflow:hidden;padding:30px 0;margin:90px 0 0;border-block:1px solid var(--line)}
+.track{display:flex;gap:56px;width:max-content;animation:scroll 36s linear infinite}
+.track span{font-family:var(--display);font-size:clamp(26px,3vw,40px);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:56px;color:var(--ink-2)}
+.track span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--terra)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- Editorial sections ---------- */
+.block{padding-top:130px}
+.split{display:grid;grid-template-columns:1fr 1fr}
+.split > *{min-width:0}
+.pad{padding:0 0 0 56px}
+.split.rev .pad{padding:0 56px 0 0}
+.num{font-family:var(--display);font-size:clamp(72px,8vw,112px);line-height:1;margin-bottom:18px}
+.big-title{font-size:clamp(44px,6vw,92px)}
+.big-title span{display:block}
+.big-title span:nth-child(2){padding-left:1.2em}
+.big-title span:nth-child(3){padding-left:2.4em}
+.ko-h{font-size:clamp(18px,1.8vw,22px);font-weight:300;letter-spacing:.04em;margin-top:14px}
+.body{color:var(--ink-2);font-size:14.5px;max-width:460px}
+.small{font-size:13px;color:var(--ink-3)}
+
+/* canvas panels */
+.canvas{position:relative;overflow:hidden;aspect-ratio:3/4;
+  background:
+    radial-gradient(55% 40% at 35% 30%,rgba(255,255,255,.5) 0%,transparent 70%),
+    linear-gradient(165deg,var(--canvas-1) 0%,var(--canvas-2) 65%,var(--canvas-3) 100%)}
+.canvas.terra{background:
+    radial-gradient(45% 40% at 40% 45%,rgba(176,83,47,.55) 0%,transparent 70%),
+    radial-gradient(55% 40% at 70% 20%,rgba(255,255,255,.45) 0%,transparent 70%),
+    linear-gradient(165deg,#e8dccb 0%,#d4bea2 70%,#c2a688 100%)}
+.canvas .stamp{position:absolute;left:24px;bottom:18px;font-family:var(--display);font-size:22px;letter-spacing:.2em;color:rgba(255,255,255,.92);text-transform:uppercase}
+
+/* 01 */
+.intro-title{text-align:center;margin-bottom:70px}
+.intro-title .big-title{display:inline-block;text-align:left}
+.intro{display:grid;grid-template-columns:1fr 1fr;align-items:start}
+.intro .label{padding-left:16%;padding-top:10px}
+.quote{font-weight:200;font-size:clamp(24px,2.6vw,34px);line-height:1.45;letter-spacing:-.01em;margin-bottom:20px}
+
+/* 02 */
+.who-list{list-style:none;margin-top:30px;border-top:1px solid var(--line);max-width:480px}
+.who-list li{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.who-list .label{font-size:10.5px;padding-top:4px;letter-spacing:.2em}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pills span{font-size:12px;padding:3px 12px;border:1px solid var(--line);border-radius:999px;color:var(--ink-2)}
+
+/* 03 */
+.design-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);margin-top:40px}
+.design-grid > div{padding:24px 24px 26px 0;border-bottom:1px solid var(--line)}
+.design-grid > div:nth-child(odd){border-right:1px solid var(--line)}
+.design-grid > div:nth-child(even){padding-left:24px}
+.design-grid .label{font-size:10px;letter-spacing:.22em;margin-bottom:10px;display:block}
+.mark{font-family:var(--display);font-size:40px;letter-spacing:.12em;line-height:1.15}
+.mark b{color:var(--terra);font-weight:400}
+.swatches{display:flex;gap:8px;margin-bottom:8px}
+.swatches i{width:30px;height:30px;border-radius:50%;border:1px solid var(--line)}
+.menu-list{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--display);font-size:20px;letter-spacing:.1em;text-transform:uppercase}
+
+/* 04 */
+.feat-head{text-align:right}
+.feat-head .big-title{display:inline-block;text-align:left}
+.features{border-top:1px solid var(--line);margin-top:50px}
+.feat{display:grid;grid-template-columns:90px 200px 1fr auto;gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line);transition:padding .35s ease,background .35s}
+.feat:hover{padding-left:14px;background:rgba(241,242,238,.6)}
+.feat .n{font-family:var(--display);font-size:34px;line-height:1}
+.feat .name{font-size:17px;font-weight:400;letter-spacing:.02em}
+.feat .desc{color:var(--ink-2);font-size:14.5px}
+.prio{font-size:11px;letter-spacing:.2em;white-space:nowrap}
+.prio.high{color:var(--terra)}
+.prio.mid{color:var(--ink-3)}
+
+/* 05 */
+.screens{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;align-items:start}
+.screen:nth-child(2){margin-top:80px}
+.screen:nth-child(3){margin-top:160px}
+.screen .canvas{display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.screen:hover .canvas{transform:scale(.98)}
+.mock{width:66%;aspect-ratio:3/4;background:rgba(241,242,238,.92);box-shadow:0 20px 40px rgba(80,55,30,.18);padding:10%;display:flex;flex-direction:column;gap:7%}
+.mock .b{background:#dcd6cc;flex:none}
+.mock .b.accent{background:var(--terra-soft)}
+.mock .row{display:flex;gap:7%;flex:1}
+.mock .row .b{flex:1}
+.screen .label{font-size:10.5px}
+.screen h3{font-size:19px;font-weight:300;margin:6px 0 2px}
+
+/* 06 */
+.goal{padding:160px 0 130px;text-align:center}
+.goal .num{margin-bottom:8px}
+.goal .label{display:block;margin-bottom:42px}
+.goal h2{font-weight:200;font-size:clamp(24px,3.2vw,42px);line-height:1.5;max-width:900px;margin:0 auto;letter-spacing:-.01em}
+.goal .btn{margin-top:50px}
+
+footer{border-top:1px solid var(--line);padding:30px 0 40px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+footer small{font-size:10.5px;letter-spacing:.24em;color:var(--ink-3);text-transform:uppercase}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .track,.chip{animation:none}
+}
+
+/* ---------- Responsive ---------- */
+@media(max-width:960px){
+  .menu{display:none}
+  .hero-grid,.split,.intro{grid-template-columns:1fr}
+  .hero-text{padding:30px 0 50px}
+  .visual{min-height:420px}
+  .pad,.split.rev .pad{padding:40px 0 0}
+  .split.rev .canvas-wrap{order:-1}
+  .canvas-wrap .canvas{aspect-ratio:4/3}
+  .intro .label{padding:0 0 20px}
+  .intro-title{text-align:left;margin-bottom:40px}
+  .screens{grid-template-columns:1fr 1fr}
+  .screen:nth-child(3){margin-top:0}
+  .feat{grid-template-columns:60px 1fr auto;gap:4px 16px}
+  .feat .desc{grid-column:2 / -1;grid-row:2}
+}
+@media(max-width:600px){
+  .wrap{padding:0 20px}
+  .nav{padding:16px 20px}
+  .nav .cta{padding:8px 14px;font-size:10px}
+  .hero{padding-top:90px}
+  .block{padding-top:96px}
+  .design-grid{grid-template-columns:1fr}
+  .design-grid > div:nth-child(odd){border-right:0}
+  .design-grid > div:nth-child(even){padding-left:0}
+  .who-list li{grid-template-columns:1fr;gap:4px}
+  .screens{grid-template-columns:1fr;gap:40px}
+  .screen:nth-child(2){margin-top:0}
+  .screen .canvas{aspect-ratio:4/3}
+  .mock{width:42%}
+  .chip.c2{display:none}
+  .goal{padding:110px 0 96px}
+}
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="wrap">
-    <div class="eyebrow">Project Plan · 기획서</div>
-    <h1>김인해 포트폴리오 기획서</h1>
-    <p>그동안 해온 작업을 한곳에 모아 보여주는 개인 포트폴리오 사이트 기획서입니다.</p>
+<svg class="cracks" viewBox="0 0 1000 6000" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M40 300 C 70 420, 20 520, 90 640 S 60 860, 140 980 S 110 1180, 60 1320"/>
+  <path d="M90 640 C 140 660, 190 700, 230 760"/>
+  <path d="M930 1650 C 880 1760, 960 1880, 900 2010 S 940 2240, 870 2380"/>
+  <path d="M900 2010 C 850 2030, 800 2070, 770 2130"/>
+  <path d="M60 2900 C 120 3010, 40 3150, 110 3300 S 70 3520, 150 3660"/>
+  <path d="M110 3300 C 170 3320, 210 3370, 260 3390"/>
+  <path d="M950 4200 C 890 4330, 970 4470, 910 4620 S 960 4840, 880 4990"/>
+  <path d="M480 5250 C 520 5340, 450 5440, 520 5560"/>
+</svg>
+
+<nav class="nav" id="nav">
+  <a href="#top" class="logo">INHAE<b>.</b></a>
+  <ul class="menu">
+    <li><a href="#background">BACKGROUND</a></li>
+    <li><a href="#audience">AUDIENCE</a></li>
+    <li><a href="#design">DESIGN</a></li>
+    <li><a href="#features">FEATURES</a></li>
+    <li><a href="#screens">SCREENS</a></li>
+  </ul>
+  <a href="#goal" class="cta">GOAL ›</a>
+</nav>
+
+<header class="hero wrap" id="top">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="label">Portfolio Plan · 기획서</div>
+      <h1 class="display"><span>Inhae<b class="hl" style="font-weight:400">.</b></span><span>Portfolio</span><span>Plan</span></h1>
+      <div class="ko-name">김인해 포트폴리오 기획서</div>
+      <p>그동안 해온 작업을 한곳에 모아 보여주는 공간. 한 번 만들어두고 계속 채워나갈 나만의 사이트를 기획합니다.</p>
+      <div class="hero-bottom">
+        <span class="year">2026</span>
+        <a href="#background" class="btn">기획서 보기 ›</a>
+        <a href="#features" class="btn ghost">핵심 기능 ›</a>
+      </div>
+    </div>
+    <div class="visual reveal">
+      <div class="chip c1"><span>👋</span> 안녕하세요, 김인해입니다</div>
+      <div class="chip c2"><span>🗂️</span> Work · About · Contact</div>
+      <div class="chip c3"><span>✨</span> Minimal &amp; Clean</div>
+      <div class="big">INHAE.</div>
+    </div>
   </div>
 </header>
 
-<div class="wrap">
-  <div class="doc">
-    <div class="doctitle">Project Plan</div>
-    <h2>INHAE. — 김인해 포트폴리오</h2>
-    <div class="subtitle">그동안 해온 작업을 한곳에 모아 보여주는 공간</div>
-
-    <div class="sec">
-      <h3>01. 기획 배경</h3>
-      <p>그동안 만들거나 해온 것들이 여기저기 흩어져 있어서, 누군가 "뭘 할 수 있는지 보여줄 수 있어?"라고 물으면 바로 보여줄 곳이 없었습니다. 한 번 만들어두면 계속 채워나갈 수 있는 나만의 공간을 만들고 싶습니다.</p>
-    </div>
-
-    <div class="sec">
-      <h3>02. 누가 보나요</h3>
-      <div class="twocol">
-        <div class="minicard">
-          <div class="lbl">보는 사람</div>
-          <div class="val">내가 뭘 할 수 있는 사람인지 궁금한 사람 (채용 담당자, 같이 작업하고 싶은 사람, 지인 등)</div>
-        </div>
-        <div class="minicard">
-          <div class="lbl">보여주고 싶은 것</div>
-          <div class="val">그동안 해온 작업물과, 어떤 걸 할 수 있는 사람인지</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sec">
-      <h3>03. 디자인 방향</h3>
-      <div class="twocol">
-        <div class="minicard">
-          <div class="lbl">사이트명 / 로고</div>
-          <div class="val">INHAE. (이름 + 마침표. 심플하게 텍스트로만)</div>
-        </div>
-        <div class="minicard">
-          <div class="lbl">메인 컬러</div>
-          <div class="val">차콜 그레이(#1a1a1a) + 포인트로 옐로우 한 가지만</div>
-        </div>
-        <div class="minicard">
-          <div class="lbl">메뉴 구성</div>
-          <div class="val">Home · About · Work · Contact (4개, 심플하게)</div>
-        </div>
-        <div class="minicard">
-          <div class="lbl">참고 사이트</div>
-          <div class="val">Day4 스타일 중 "미니멀" — 여백 넉넉하고 사진이 크게 보이는 쪽</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sec">
-      <h3>04. 핵심 기능</h3>
-      <table class="feattable">
-        <tr><th>기능</th><th>설명</th><th>우선순위</th></tr>
-        <tr><td class="fname">자기소개</td><td>이름과 간단한 소개 문구가 보이는 영역</td><td><span class="prio high">필수</span></td></tr>
-        <tr><td class="fname">작업물 목록</td><td>해온 작업들을 카드 형태로 쭉 보여주기</td><td><span class="prio high">필수</span></td></tr>
-        <tr><td class="fname">작업물 상세</td><td>카드를 누르면 그 작업에 대해 더 자세히 보여주기</td><td><span class="prio high">필수</span></td></tr>
-        <tr><td class="fname">연락 방법</td><td>이메일이나 연락 수단을 안내</td><td><span class="prio high">필수</span></td></tr>
-        <tr><td class="fname">기록 게시판</td><td>작업하면서 남긴 짧은 기록을 올리는 공간</td><td><span class="prio mid">나중에</span></td></tr>
-      </table>
-    </div>
-
-    <div class="sec">
-      <h3>05. 필요한 화면</h3>
-      <ul>
-        <li><b>메인</b> — 소개와 작업물 목록이 함께 보이는 첫 화면</li>
-        <li><b>작업물 상세</b> — 하나를 눌렀을 때 나오는 자세한 화면</li>
-        <li><b>연락</b> — 연락 방법을 남기는 화면</li>
-      </ul>
-    </div>
-
-    <div class="sec">
-      <h3>06. 얻고 싶은 것</h3>
-      <p>완벽하게 만드는 게 목표가 아니라, 내가 직접 기획하고 만든 화면이 실제로 인터넷에 떠 있는 걸 경험하는 게 목표입니다.</p>
-    </div>
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Background</span><span>Audience</span><span>Design</span><span>Features</span><span>Screens</span><span>Goal</span>
+    <span>Background</span><span>Audience</span><span>Design</span><span>Features</span><span>Screens</span><span>Goal</span>
   </div>
-
 </div>
+
+<main>
+
+  <!-- 01 기획 배경 -->
+  <section class="block wrap" id="background">
+    <div class="intro-title reveal">
+      <h2 class="display big-title"><span>Why</span><span>This</span><span>Space</span></h2>
+    </div>
+    <div class="intro reveal">
+      <div class="label">01 — 기획 배경</div>
+      <div>
+        <p class="quote">"뭘 할 수 있는지 <span class="hl">보여줄 수 있어?</span>"</p>
+        <p class="body">그동안 만들거나 해온 것들이 여기저기 흩어져 있어서, 누군가 이렇게 물으면 바로 보여줄 곳이 없었습니다. 한 번 만들어두면 계속 채워나갈 수 있는 나만의 공간을 만들고 싶습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 누가 보나요 -->
+  <section class="block wrap" id="audience">
+    <div class="split">
+      <div class="canvas-wrap reveal"><div class="canvas terra"><span class="stamp">Audience</span></div></div>
+      <div class="pad reveal" style="align-self:center">
+        <div class="num">02</div>
+        <div class="label">Audience · 누가 보나요</div>
+        <ul class="who-list">
+          <li>
+            <span class="label">보는 사람</span>
+            <div>
+              <p>내가 뭘 할 수 있는 사람인지 궁금한 사람</p>
+              <div class="pills"><span>채용 담당자</span><span>같이 작업하고 싶은 사람</span><span>지인</span></div>
+            </div>
+          </li>
+          <li>
+            <span class="label">보여주고 싶은 것</span>
+            <p>그동안 해온 작업물과, 어떤 걸 할 수 있는 사람인지</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 디자인 방향 -->
+  <section class="block wrap" id="design">
+    <div class="split rev">
+      <div class="pad reveal" style="align-self:center">
+        <div class="num">03</div>
+        <div class="label">Design · 디자인 방향</div>
+        <div class="design-grid">
+          <div>
+            <span class="label">사이트명 / 로고</span>
+            <div class="mark">INHAE<b>.</b></div>
+            <p class="small">이름 + 마침표. 심플하게 텍스트로만</p>
+          </div>
+          <div>
+            <span class="label">메인 컬러</span>
+            <div class="swatches"><i style="background:#1a1a1a"></i><i style="background:#f2c94c"></i></div>
+            <p class="small">차콜 그레이(#1a1a1a) + 포인트로 옐로우 한 가지만</p>
+          </div>
+          <div>
+            <span class="label">메뉴 구성</span>
+            <div class="menu-list"><span>Home</span><span>About</span><span>Work</span><span>Contact</span></div>
+            <p class="small">4개, 심플하게</p>
+          </div>
+          <div>
+            <span class="label">참고 사이트</span>
+            <p>Day4 스타일 중 <span class="hl">"미니멀"</span></p>
+            <p class="small">여백 넉넉하고 사진이 크게 보이는 쪽</p>
+          </div>
+        </div>
+      </div>
+      <div class="canvas-wrap reveal"><div class="canvas"><span class="stamp">Design</span></div></div>
+    </div>
+  </section>
+
+  <!-- 04 핵심 기능 -->
+  <section class="block wrap" id="features">
+    <div class="feat-head reveal">
+      <h2 class="display big-title"><span>Key</span><span>Features</span></h2>
+      <div class="ko-h">04 — 핵심 기능</div>
+    </div>
+    <div class="features reveal">
+      <div class="feat"><span class="n">01</span><span class="name">자기소개</span><span class="desc">이름과 간단한 소개 문구가 보이는 영역</span><span class="prio high">필수</span></div>
+      <div class="feat"><span class="n">02</span><span class="name">작업물 목록</span><span class="desc">해온 작업들을 카드 형태로 쭉 보여주기</span><span class="prio high">필수</span></div>
+      <div class="feat"><span class="n">03</span><span class="name">작업물 상세</span><span class="desc">카드를 누르면 그 작업에 대해 더 자세히 보여주기</span><span class="prio high">필수</span></div>
+      <div class="feat"><span class="n">04</span><span class="name">연락 방법</span><span class="desc">이메일이나 연락 수단을 안내</span><span class="prio high">필수</span></div>
+      <div class="feat"><span class="n">05</span><span class="name">기록 게시판</span><span class="desc">작업하면서 남긴 짧은 기록을 올리는 공간</span><span class="prio mid">나중에</span></div>
+    </div>
+  </section>
+
+  <!-- 05 필요한 화면 -->
+  <section class="block wrap" id="screens">
+    <div class="reveal">
+      <h2 class="display big-title"><span>Screens</span></h2>
+      <div class="ko-h">05 — 필요한 화면</div>
+    </div>
+    <div class="screens">
+      <div class="screen reveal">
+        <div class="canvas">
+          <div class="mock">
+            <div class="b accent" style="height:30%"></div>
+            <div class="row"><div class="b"></div><div class="b"></div><div class="b"></div></div>
+          </div>
+        </div>
+        <div class="label">i. Main</div>
+        <h3>메인</h3>
+        <p class="small">소개와 작업물 목록이 함께 보이는 첫 화면</p>
+      </div>
+      <div class="screen reveal">
+        <div class="canvas terra">
+          <div class="mock">
+            <div class="b accent" style="height:46%"></div>
+            <div class="b" style="height:7%;width:70%"></div>
+            <div class="b" style="height:5%"></div>
+            <div class="b" style="height:5%;width:55%"></div>
+          </div>
+        </div>
+        <div class="label">ii. Detail</div>
+        <h3>작업물 상세</h3>
+        <p class="small">하나를 눌렀을 때 나오는 자세한 화면</p>
+      </div>
+      <div class="screen reveal">
+        <div class="canvas">
+          <div class="mock" style="justify-content:center;align-items:center">
+            <div class="b" style="height:6%;width:55%"></div>
+            <div class="b" style="height:12%;width:85%;background:#fff"></div>
+            <div class="b" style="height:12%;width:85%;background:#fff"></div>
+            <div class="b accent" style="height:9%;width:40%;border-radius:999px"></div>
+          </div>
+        </div>
+        <div class="label">iii. Contact</div>
+        <h3>연락</h3>
+        <p class="small">연락 방법을 남기는 화면</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 얻고 싶은 것 -->
+  <section class="goal wrap reveal" id="goal">
+    <div class="num">06</div>
+    <span class="label">Goal · 얻고 싶은 것</span>
+    <h2>완벽하게 만드는 게 목표가 아니라, 내가 직접 기획하고 만든 화면이 <span class="hl">실제로 인터넷에 떠 있는 걸</span> 경험하는 게 목표입니다.</h2>
+    <a href="#top" class="btn">맨 위로 ↑</a>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="logo">INHAE<b>.</b></span>
+    <small>© 2026 김인해 · Portfolio Plan</small>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 10), { passive: true });
+</script>
 
 </body>
 </html>
