@@ -1,16 +1,537 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>inhaekeem의 포트폴리오</title>
-  <style>
-    body {
-      color: pink;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>홍길동 포트폴리오</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: 16px; line-height: 1.7; color: #16181d; background: #f2f2f3; word-break: keep-all; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+.wrap { width: 1200px; max-width: calc(100% - 80px); margin: 0 auto; }
+
+/* header */
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+.header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background .25s, box-shadow .25s; }
+.header.scrolled { background: rgba(242,242,243,.95); box-shadow: 0 2px 14px rgba(0,0,0,.1); }
+.header.scrolled .bar { padding: 10px 0; }
+.bar { display: flex; align-items: center; padding: 24px 0; transition: padding .25s; }
+.logo { display: inline-block; padding: 10px 0; font-size: 17px; font-weight: 800; text-decoration: none; }
+.menu { margin-left: 40px; }
+.menu a { display: inline-block; padding: 12px 12px; font-size: 15px; font-weight: 500; text-decoration: none; }
+.menu a:hover { background: rgba(0,0,0,.07); border-radius: 999px; }
+.header-btn { margin-left: auto; display: inline-block; padding: 12px 26px; border-radius: 999px; background: #fff; color: #102445; font-size: 15px; font-weight: 600; text-decoration: none; box-shadow: 0 4px 16px rgba(0,0,0,.14); }
+
+/* hero */
+.hero { position: relative; overflow: hidden; padding: 150px 0 160px; }
+.hero:before { content: ""; position: absolute; top: 0; right: 0; width: 35%; height: 64%; background: #102445; }
+.hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.eyebrow { font-size: 15px; font-weight: 500; letter-spacing: 1px; color: #5d6066; }
+.hero-name { margin: 10px 0 20px; font-size: 88px; font-weight: 800; line-height: 1.05; letter-spacing: -2px; }
+.hero-sub { max-width: 420px; margin-bottom: 20px; font-size: 28px; font-weight: 600; line-height: 1.4; }
+.hero-desc { max-width: 440px; margin-bottom: 36px; color: #5d6066; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-photo { position: relative; justify-self: end; width: 520px; max-width: 100%; }
+.hero-photo:before { content: ""; position: absolute; left: 12%; top: -30px; width: 30%; height: 40px; background: #cdd8ea; }
+.hero-photo img { position: relative; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,.18); }
+.hero-tag { position: absolute; right: 2%; top: 26%; z-index: 2; font-size: 14px; font-weight: 600; letter-spacing: 2px; line-height: 1.9; color: #fff; }
+.hero-index { position: absolute; right: 2%; top: 58%; z-index: 2; font-size: 14px; font-weight: 700; color: #fff; }
+.scroll { position: absolute; left: max(40px, calc(50% - 600px)); bottom: 24px; z-index: 2; display: inline-block; padding: 12px 0 0; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-decoration: none; color: #5d6066; }
+.scroll:after { content: ""; display: block; width: 1px; height: 44px; margin-top: 6px; background: #5d6066; }
+
+/* buttons */
+.btn { display: inline-block; padding: 12px 26px; border: 1.5px solid transparent; border-radius: 999px; font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; }
+.btn-navy { background: #102445; color: #fff; }
+.btn-line { border-color: #102445; color: #102445; background: transparent; }
+.btn-white { background: #fff; color: #102445; box-shadow: 0 4px 16px rgba(0,0,0,.14); }
+.round { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: 1.5px solid #102445; border-radius: 50%; font-size: 18px; cursor: pointer; text-decoration: none; }
+.round.on { background: #102445; color: #fff; }
+
+/* sections */
+.sec { padding: 120px 0; }
+.no { font-size: 14px; font-weight: 600; color: #5d6066; }
+.title { display: flex; align-items: center; gap: 20px; font-size: 44px; font-weight: 700; line-height: 1.2; }
+.title:after { content: ""; width: 56px; height: 1px; background: currentColor; opacity: .5; }
+.head-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 60px; }
+.muted { color: #5d6066; }
+
+/* about */
+.about-grid { display: grid; grid-template-columns: 1.05fr 1fr 1fr; gap: 60px; align-items: center; }
+.about-text .title { margin: 6px 0 40px; }
+.about-lead { margin-bottom: 16px; font-size: 32px; font-weight: 700; line-height: 1.35; }
+.about-text p { margin: 0 0 16px; }
+.about-text .btn { margin-top: 14px; }
+.about-photo { position: relative; }
+.about-photo:before { content: ""; position: absolute; right: -24px; top: -24px; width: 70%; height: 80%; background: #cdd8ea; }
+.about-photo img { position: relative; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.info { margin-left: 40px; }
+.info-row { display: grid; grid-template-columns: 24px 90px 1fr; gap: 0 12px; padding: 12px 0; }
+.info-row svg { width: 22px; height: 22px; margin-top: 3px; fill: none; stroke: #102445; stroke-width: 1.8; }
+.info-label { font-weight: 700; }
+.info-value { color: #5d6066; }
+
+/* skills */
+.skills { position: relative; overflow: hidden; background: #102445; color: #fff; }
+.skills:before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 24%; background: linear-gradient(135deg, #1b3563 0%, #12274b 60%, #102445 100%); }
+.skills-grid { position: relative; display: grid; grid-template-columns: 1fr 2.4fr; gap: 70px; align-items: center; }
+.skills .no { color: #d0d3d9; }
+.skills .title { margin: 6px 0 24px; color: #fff; }
+.skills-text p { margin: 0 0 16px; color: #e1e3e8; }
+.tools { display: grid; grid-template-columns: repeat(4, 1fr); }
+.tool { padding: 28px 12px; text-align: center; }
+.tool:nth-child(n+5) { border-top: 1px solid rgba(255,255,255,.18); }
+.tool-ic { width: 52px; height: 52px; margin: 0 auto 14px; }
+.tool-name { font-size: 16px; font-weight: 700; }
+.tool-sub { font-size: 13px; color: #d0d3d9; }
+.tool-desc { margin: 10px 0 0; font-size: 14px; line-height: 1.6; color: #e1e3e8; }
+.badge { display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 22px; font-weight: 800; }
+.ps { background: #001e36; color: #31a8ff; box-shadow: inset 0 0 0 2px #31a8ff; }
+.ai { background: #330000; color: #ff9a00; box-shadow: inset 0 0 0 2px #ff9a00; }
+.ae { background: #00005b; color: #9999ff; box-shadow: inset 0 0 0 2px #9999ff; }
+.html { background: #e34f26; color: #fff; }
+.css { background: #1572b6; color: #fff; }
+.js { background: #f7df1e; color: #1a1a1a; }
+.nt { background: #fff; color: #111; }
+
+/* portfolio */
+.filter { display: flex; flex-wrap: wrap; gap: 8px; }
+.filter-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border: 1px solid #d3d4d8; border-radius: 999px; background: #fff; font-size: 14px; font-weight: 600; cursor: pointer; }
+.filter-btn.on { background: #102445; border-color: #102445; color: #fff; }
+.project { display: grid; grid-template-columns: 1.5fr 1fr; gap: 70px; align-items: center; padding: 30px 0; }
+.project.reverse { grid-template-columns: 1fr 1.5fr; }
+.project.reverse .project-img { order: 2; }
+.project-img { display: block; box-shadow: 0 16px 36px rgba(0,0,0,.14); }
+.project-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.meta { font-size: 14px; color: #5d6066; }
+.project-title { margin: 8px 0 10px; font-size: 30px; font-weight: 700; }
+.project-facts { margin: 16px 0 0; padding: 14px 0; border-top: 1px solid #d3d4d8; border-bottom: 1px solid #d3d4d8; font-size: 14px; }
+.fact { display: grid; grid-template-columns: 50px 1fr; gap: 10px; padding: 2px 0; }
+.fact span:first-child { font-weight: 700; }
+.fact span:last-child { color: #5d6066; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; }
+.tag { padding: 2px 14px; border: 1px solid #d3d4d8; border-radius: 999px; background: #fff; font-size: 13px; color: #5d6066; }
+.more { display: inline-block; margin-top: 28px; padding: 10px 0; font-size: 15px; font-weight: 600; text-decoration: none; }
+.empty { display: none; padding: 60px 0; text-align: center; color: #5d6066; }
+
+/* blog */
+.blog { background: linear-gradient(rgba(11,26,53,.84), rgba(11,26,53,.84)), url(img/visual.jpg) center / cover; color: #fff; overflow: hidden; }
+.blog-grid { display: grid; grid-template-columns: 260px 1fr; gap: 60px; align-items: center; }
+.blog-text .title { margin: 6px 0 20px; }
+.blog-text .muted { color: #e1e3e8; }
+.blog-text .no { color: #d0d3d9; }
+.blog .round { border-color: rgba(255,255,255,.7); color: #fff; }
+.blog .round.on { background: #fff; color: #102445; }
+.arrows { display: flex; gap: 10px; margin-top: 30px; }
+.blog-track { display: flex; gap: 20px; overflow-x: auto; padding: 8px calc((100vw - min(1200px, 100vw - 80px)) / 2) 24px 4px; margin-right: calc((100vw - min(1200px, 100vw - 80px)) / -2); scroll-snap-type: x mandatory; scrollbar-width: none; }
+.blog-track::-webkit-scrollbar { display: none; }
+.post-card { flex: 0 0 270px; scroll-snap-align: start; background: #fff; color: #16181d; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+.post-card a { display: block; height: 100%; text-decoration: none; }
+.post-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.post-body { padding: 18px; }
+.post-date { font-size: 13px; color: #5d6066; }
+.post-title { margin: 6px 0 8px; font-size: 17px; font-weight: 700; line-height: 1.4; }
+.post-text { font-size: 14px; line-height: 1.6; color: #5d6066; }
+
+/* board */
+.board-top { border-top: 2px solid #102445; }
+.board-row { display: grid; grid-template-columns: 70px 1fr 130px; gap: 20px; align-items: center; padding: 22px 16px; border-bottom: 1px solid #d3d4d8; text-decoration: none; }
+.board-row:hover { background: #fff; }
+.board-no { font-weight: 600; color: #5d6066; }
+.board-title { font-size: 18px; font-weight: 600; }
+.notice { display: inline-block; margin-right: 10px; padding: 0 10px; border-radius: 999px; background: #102445; color: #fff; font-size: 12px; font-weight: 700; }
+.board-date { font-size: 15px; text-align: right; color: #5d6066; }
+
+/* contact */
+.contact { background: #102445; color: #fff; }
+.contact .no { color: #d0d3d9; }
+.contact .title { margin: 6px 0 24px; color: #fff; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; }
+.contact-text p { max-width: 340px; margin: 0 0 24px; color: #e1e3e8; }
+.contact-info { max-width: 340px; margin-bottom: 30px; font-size: 14px; }
+.contact-info div { display: grid; grid-template-columns: 90px 1fr; gap: 10px; padding: 8px 0; border-top: 1px solid rgba(255,255,255,.2); }
+.contact-info div span:first-child { font-weight: 700; }
+.contact-info div span:last-child { color: #e1e3e8; }
+.sns { display: flex; flex-wrap: wrap; gap: 10px; }
+.sns a { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: 1px solid rgba(255,255,255,.5); border-radius: 50%; font-size: 14px; font-weight: 700; text-decoration: none; }
+.sns svg { width: 22px; height: 22px; fill: none; stroke: #fff; stroke-width: 1.8; }
+.contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.full { grid-column: 1 / -1; }
+.contact-form input, .contact-form textarea { width: 100%; padding: 14px 16px; border: 1px solid rgba(255,255,255,.3); border-radius: 12px; background: rgba(255,255,255,.08); font-family: inherit; font-size: 16px; color: #fff; }
+.contact-form textarea { min-height: 150px; }
+.contact-form ::placeholder { color: #d0d3d9; opacity: 1; }
+.count { margin-top: 6px; font-size: 13px; text-align: right; color: #d0d3d9; }
+.contact-form button { font-family: inherit; }
+
+/* footer */
+.footer { background: #0b1a35; color: #fff; padding: 40px 0; }
+.foot-grid { display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
+.footer small { display: block; margin-top: 4px; font-size: 13px; color: #d0d3d9; }
+.foot-menu a { display: inline-block; padding: 12px 14px; font-size: 14px; text-decoration: none; }
+.footer .round { border-color: rgba(255,255,255,.5); color: #fff; }
+
+@media (max-width: 1200px) {
+  .hero:before { width: 30%; }
+}
+@media (max-width: 1000px) {
+  .menu { display: none; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-photo { justify-self: start; width: 100%; max-width: 480px; }
+  .hero:before { width: 50%; height: 380px; }
+  .hero-tag, .hero-index { display: none; }
+  .about-grid { grid-template-columns: 1fr 1fr; }
+  .info { grid-column: 1 / -1; margin-left: 0; }
+  .skills-grid { grid-template-columns: 1fr; gap: 40px; }
+  .skills:before { width: 12%; }
+  .project, .project.reverse { grid-template-columns: 1fr; gap: 30px; }
+  .project.reverse .project-img { order: 0; }
+  .blog-grid { grid-template-columns: 1fr; gap: 30px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+}
+@media (max-width: 700px) {
+  .wrap { max-width: calc(100% - 40px); }
+  .sec { padding: 80px 0; }
+  .title { font-size: 34px; }
+  .hero-name { font-size: 60px; }
+  .hero-sub { font-size: 22px; }
+  .head-row { flex-direction: column; align-items: flex-start; margin-bottom: 40px; }
+  .bar { padding: 16px 0; }
+  .header-btn { padding: 10px 18px; font-size: 14px; }
+  .hero { padding: 110px 0 80px; }
+  .hero:before { width: 70%; height: 300px; }
+  .scroll { display: none; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-photo:before { right: -10px; top: -10px; }
+  .info-row { grid-template-columns: 24px 80px 1fr; }
+  .tools { grid-template-columns: repeat(2, 1fr); }
+  .tool:nth-child(n+5) { border-top: 0; }
+  .tool:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.18); }
+  .board-row { grid-template-columns: 40px 1fr; gap: 4px 12px; padding: 18px 8px; }
+  .board-date { grid-column: 2; text-align: left; }
+  .contact-form { grid-template-columns: 1fr; }
+  .blog-track { margin-right: -20px; padding-right: 20px; }
+  .foot-grid { flex-direction: column; align-items: flex-start; }
+}
+</style>
 </head>
 <body>
-  <h1>안녕하세요 inhaekeem입니다</h1>
+
+<div class="header" id="header">
+  <div class="wrap bar">
+    <a class="logo" href="#">HONG GILDONG</a>
+    <div class="menu">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#blog">Blog</a>
+      <a href="#board">Board</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="header-btn" href="#contact">작업 문의하기 →</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">UI/UX DESIGNER</div>
+      <div class="hero-name">홍길동</div>
+      <div class="hero-sub">사용하는 사람이 헤매지 않는 화면을 만듭니다.</div>
+      <div class="hero-desc">웹과 모바일 서비스의 화면 구조와 사용 흐름을 설계하고, 디자인을 HTML과 CSS로 직접 구현합니다.</div>
+      <div class="cta">
+        <a class="btn btn-navy" href="#portfolio">포트폴리오 보기 →</a>
+        <a class="btn btn-line" href="#contact">연락하기</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="img/visual.jpg">
+    </div>
+    <div class="hero-tag">UI/UX<br>WEB<br>APP</div>
+    <div class="hero-index">01</div>
+  </div>
+  <a class="scroll" href="#about">Scroll</a>
+</div>
+
+<div class="sec about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-text">
+      <div class="no">02</div>
+      <div class="title">About Me</div>
+      <div class="about-lead">홍길동,<br>UI/UX 디자이너입니다.</div>
+      <p class="muted">웹과 모바일 서비스의 화면을 설계합니다. 사용자 조사부터 프로토타입, HTML·CSS 구현까지 한 흐름으로 작업합니다.</p>
+      <p class="muted">화면을 만들 때는 사용 순서를 먼저 그리고, 각 화면에 필요한 요소만 남깁니다. 글자 대비, 대체 텍스트, 키보드 이동 같은 접근성 기준도 함께 확인합니다.</p>
+      <a class="btn btn-line" href="#portfolio">더 알아보기 →</a>
+    </div>
+    <div class="about-photo">
+      <img src="img/profile.jpg">
+    </div>
+    <div class="info">
+      <div class="info-row">
+        <svg viewBox="0 0 24 24"><path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg>
+        <span class="info-label">위치</span><span class="info-value">서울특별시 강남구</span>
+      </div>
+      <div class="info-row">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        <span class="info-label">이메일</span><span class="info-value">hong@example.com</span>
+      </div>
+      <div class="info-row">
+        <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18"/></svg>
+        <span class="info-label">경력</span><span class="info-value">프리랜서 2년</span>
+      </div>
+      <div class="info-row">
+        <svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
+        <span class="info-label">학력</span><span class="info-value">OO대학교 시각디자인과 졸업</span>
+      </div>
+      <div class="info-row">
+        <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/></svg>
+        <span class="info-label">관심 분야</span><span class="info-value">UI/UX, 웹 디자인, 사용자 리서치</span>
+      </div>
+      <div class="info-row">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <span class="info-label">작업 방식</span><span class="info-value">기획 · 설계 · 구현을 한 사람이 진행</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec skills" id="skills">
+  <div class="wrap skills-grid">
+    <div class="skills-text">
+      <div class="no">03</div>
+      <div class="title">Skills</div>
+      <p>화면 설계부터 디자인 제작, HTML·CSS 구현, 일정 정리까지 아래 도구로 작업할 수 있습니다.</p>
+    </div>
+    <div class="tools">
+      <div class="tool">
+        <svg class="tool-ic" style="width:34px" viewBox="0 0 24 36"><path fill="#f24e1e" d="M0 6a6 6 0 0 1 6-6h6v12H6a6 6 0 0 1-6-6z"/><path fill="#ff7262" d="M12 0h6a6 6 0 0 1 0 12h-6z"/><path fill="#a259ff" d="M0 18a6 6 0 0 1 6-6h6v12H6a6 6 0 0 1-6-6z"/><circle fill="#1abcfe" cx="18" cy="18" r="6"/><path fill="#0acf83" d="M0 30a6 6 0 0 1 6-6h6v6a6 6 0 1 1-12 0z"/></svg>
+        <div class="tool-name">Figma</div><div class="tool-sub">UI/UX Design</div>
+        <div class="tool-desc">화면 설계와 프로토타입 제작, 컴포넌트 정리가 가능합니다.</div>
+      </div>
+      <div class="tool">
+        <div class="tool-ic badge ps">Ps</div>
+        <div class="tool-name">Photoshop</div><div class="tool-sub">Image Editing</div>
+        <div class="tool-desc">이미지 보정과 목업 제작이 가능합니다.</div>
+      </div>
+      <div class="tool">
+        <div class="tool-ic badge ai">Ai</div>
+        <div class="tool-name">Illustrator</div><div class="tool-sub">Graphic Design</div>
+        <div class="tool-desc">아이콘과 로고 같은 벡터 작업이 가능합니다.</div>
+      </div>
+      <div class="tool">
+        <div class="tool-ic badge ae">Ae</div>
+        <div class="tool-name">After Effects</div><div class="tool-sub">Motion Graphics</div>
+        <div class="tool-desc">화면 전환과 간단한 모션 시안 제작이 가능합니다.</div>
+      </div>
+      <div class="tool">
+        <div class="tool-ic badge html">5</div>
+        <div class="tool-name">HTML5</div><div class="tool-sub">Markup</div>
+        <div class="tool-desc">디자인한 화면의 구조를 마크업할 수 있습니다.</div>
+      </div>
+      <div class="tool">
+        <div class="tool-ic badge css">3</div>
+        <div class="tool-name">CSS3</div><div class="tool-sub">Style</div>
+        <div class="tool-desc">레이아웃과 반응형 스타일을 작성할 수 있습니다.</div>
+      </div>
+      <div class="tool">
+        <div class="tool-ic badge js">JS</div>
+        <div class="tool-name">JavaScript</div><div class="tool-sub">Interaction</div>
+        <div class="tool-desc">탭, 슬라이더 같은 간단한 동작을 구현할 수 있습니다.</div>
+      </div>
+      <div class="tool">
+        <div class="tool-ic badge nt">N</div>
+        <div class="tool-name">Notion</div><div class="tool-sub">Project Manage</div>
+        <div class="tool-desc">일정과 작업 내용을 정리해 공유할 수 있습니다.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec portfolio" id="portfolio">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="no">04</div>
+        <div class="title">Portfolio</div>
+      </div>
+      <div class="filter">
+        <div class="filter-btn on" onclick="filterProjects('all', this)">All</div>
+        <div class="filter-btn" onclick="filterProjects('web', this)">Web</div>
+        <div class="filter-btn" onclick="filterProjects('mobile', this)">Mobile</div>
+        <div class="filter-btn" onclick="filterProjects('branding', this)">Branding</div>
+      </div>
+    </div>
+
+    <div class="project" data-type="web">
+      <a class="project-img" href="#"><img src="img/project-shop.jpg"></a>
+      <div>
+        <div class="meta">01 · Web · Renewal</div>
+        <div class="project-title">OO 쇼핑몰 리뉴얼</div>
+        <div class="muted">기존 쇼핑몰의 상품 목록과 결제 흐름을 정리해 구매 단계를 줄인 리뉴얼 프로젝트입니다. 모바일과 PC에서 같은 구조로 보이도록 반응형으로 설계했습니다.</div>
+        <div class="project-facts">
+          <div class="fact"><span>역할</span><span>UI/UX 설계, 화면 디자인</span></div>
+          <div class="fact"><span>기간</span><span>2025.03 – 2025.06</span></div>
+          <div class="fact"><span>도구</span><span>Figma, HTML, CSS</span></div>
+        </div>
+        <div class="tags"><span class="tag">#UI/UX 디자인</span><span class="tag">#프로토타입</span><span class="tag">#반응형 웹</span></div>
+        <a class="more" href="#">자세히 보기 →</a>
+      </div>
+    </div>
+
+    <div class="project reverse" data-type="mobile">
+      <a class="project-img" href="#"><img src="img/project-app.jpg"></a>
+      <div>
+        <div class="meta">02 · Mobile · App</div>
+        <div class="project-title">여행 정보 앱 디자인</div>
+        <div class="muted">여행 일정을 날짜별로 정리하고 장소를 한 화면에서 비교할 수 있는 모바일 앱 디자인입니다. 사용자 인터뷰를 바탕으로 일정 등록 단계를 3단계로 줄였습니다.</div>
+        <div class="project-facts">
+          <div class="fact"><span>역할</span><span>앱 UI 디자인, 프로토타입</span></div>
+          <div class="fact"><span>기간</span><span>2025.07 – 2025.09</span></div>
+          <div class="fact"><span>도구</span><span>Figma, Illustrator</span></div>
+        </div>
+        <div class="tags"><span class="tag">#UI/UX 디자인</span><span class="tag">#프로토타입</span><span class="tag">#앱 디자인</span></div>
+        <a class="more" href="#">자세히 보기 →</a>
+      </div>
+    </div>
+
+    <div class="project" data-type="web">
+      <a class="project-img" href="#"><img src="img/project-gallery.jpg"></a>
+      <div>
+        <div class="meta">03 · Web · Gallery</div>
+        <div class="project-title">갤러리 웹사이트</div>
+        <div class="muted">전시 작품을 분류별로 보여주는 온라인 갤러리 웹사이트입니다. 작품 이미지를 크게 보여주고, 작품 정보는 상세 화면에서 확인하도록 구성했습니다.</div>
+        <div class="project-facts">
+          <div class="fact"><span>역할</span><span>웹 디자인, 퍼블리싱</span></div>
+          <div class="fact"><span>기간</span><span>2025.10 – 2025.12</span></div>
+          <div class="fact"><span>도구</span><span>Figma, HTML, CSS, JavaScript</span></div>
+        </div>
+        <div class="tags"><span class="tag">#UI/UX 디자인</span><span class="tag">#웹 디자인</span><span class="tag">#콘텐츠 구성</span></div>
+        <a class="more" href="#">자세히 보기 →</a>
+      </div>
+    </div>
+    <div class="empty" id="empty">이 분류의 작업물은 아직 없습니다.</div>
+  </div>
+</div>
+
+<div class="sec blog" id="blog">
+  <div class="wrap blog-grid">
+    <div class="blog-text">
+      <div class="no">05</div>
+      <div class="title">Blog</div>
+      <div class="muted">디자인과 개발 관련 글을 정리했습니다.</div>
+      <div class="arrows">
+        <div class="round on" onclick="moveBlog(-1)">←</div>
+        <div class="round" onclick="moveBlog(1)">→</div>
+      </div>
+    </div>
+    <div class="blog-track" id="blog-track">
+      <div class="post-card"><a href="#"><img src="img/visual.jpg"><div class="post-body"><div class="post-date">2026. 10. 15</div><div class="post-title">첫 화면을 Claude Code로 만든 과정</div><div class="post-text">스케치를 요청문으로 바꾸고 화면을 만든 과정을 정리했습니다.</div></div></a></div>
+      <div class="post-card"><a href="#"><img src="img/project-shop.jpg"><div class="post-body"><div class="post-date">2026. 10. 08</div><div class="post-title">글자 대비를 4.5 : 1로 맞추는 이유</div><div class="post-text">읽기 쉬운 글자 색 기준과 확인 방법을 정리했습니다.</div></div></a></div>
+      <div class="post-card"><a href="#"><img src="img/project-gallery.jpg"><div class="post-body"><div class="post-date">2026. 09. 28</div><div class="post-title">벤치마킹은 구조를 배우는 일</div><div class="post-text">참고 사이트에서 가져올 것과 가져오지 않을 것을 정리했습니다.</div></div></a></div>
+      <div class="post-card"><a href="#"><img src="img/project-app.jpg"><div class="post-body"><div class="post-date">2026. 09. 20</div><div class="post-title">포트폴리오 주제를 정한 과정</div><div class="post-text">작업 방향을 정하는 데 쓴 기준을 정리했습니다.</div></div></a></div>
+      <div class="post-card"><a href="#"><img src="img/profile.jpg"><div class="post-body"><div class="post-date">2026. 09. 12</div><div class="post-title">색을 고를 때 쓰는 60:30:10 비율</div><div class="post-text">바탕, 보조, 포인트 색을 나누는 방법을 정리했습니다.</div></div></a></div>
+      <div class="post-card"><a href="#"><img src="img/project-shop.jpg"><div class="post-body"><div class="post-date">2026. 09. 05</div><div class="post-title">버튼 상태를 나누는 방법</div><div class="post-text">기본, 호버, 눌림, 포커스, 비활성 상태를 정리했습니다.</div></div></a></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec board" id="board">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="no">06</div>
+        <div class="title">Board</div>
+        <div class="muted" style="margin-top:8px">공지와 작업 관련 글을 확인할 수 있습니다.</div>
+      </div>
+      <a class="btn btn-line" href="#">전체 보기 →</a>
+    </div>
+    <div class="board-top">
+      <a class="board-row" href="#"><span class="board-no">5</span><span class="board-title"><span class="notice">공지</span>포트폴리오 사이트를 열었습니다</span><span class="board-date">2026.10.20</span></a>
+      <a class="board-row" href="#"><span class="board-no">4</span><span class="board-title">첫 화면을 Claude Code로 만든 과정</span><span class="board-date">2026.10.15</span></a>
+      <a class="board-row" href="#"><span class="board-no">3</span><span class="board-title">글자 대비를 4.5 : 1로 맞추는 이유</span><span class="board-date">2026.10.08</span></a>
+      <a class="board-row" href="#"><span class="board-no">2</span><span class="board-title">벤치마킹은 구조를 배우는 일</span><span class="board-date">2026.09.28</span></a>
+      <a class="board-row" href="#"><span class="board-no">1</span><span class="board-title">포트폴리오 주제를 정한 과정</span><span class="board-date">2026.09.20</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="sec contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-text">
+      <div class="no">07</div>
+      <div class="title">Contact</div>
+      <p>프로젝트 제안과 협업 문의는 이메일이나 아래 양식으로 보내주세요.</p>
+      <div class="contact-info">
+        <div><span>응답 시간</span><span>영업일 기준 2일 이내</span></div>
+        <div><span>작업 분야</span><span>웹·앱 UI/UX 설계, 웹 퍼블리싱</span></div>
+        <div><span>이메일</span><span>hong@example.com</span></div>
+      </div>
+      <div class="sns">
+        <a href="#"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+        <a href="#">IG</a>
+        <a href="#">GH</a>
+        <a href="#">Bē</a>
+        <a href="#">in</a>
+      </div>
+    </div>
+    <form class="contact-form" action="#" method="post" onsubmit="return false">
+      <div><input type="text" placeholder="이름 *"></div>
+      <div><input type="text" placeholder="이메일 *"></div>
+      <div class="full"><textarea placeholder="메시지 *" maxlength="500" oninput="countText(this)"></textarea><div class="count" id="count">0/500</div></div>
+      <button class="btn btn-white full" type="submit">보내기 →</button>
+    </form>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="wrap foot-grid">
+    <div>
+      <div style="font-weight:800">HONG GILDONG</div>
+      <small>© 2026 Hong Gildong. All rights reserved.</small>
+    </div>
+    <div class="foot-menu">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#blog">Blog</a>
+      <a href="#board">Board</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="round" href="#">↑</a>
+  </div>
+</div>
+
+<script>
+function filterProjects(type, btn) {
+  var buttons = document.getElementsByClassName('filter-btn');
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].className = 'filter-btn';
+  }
+  btn.className = 'filter-btn on';
+  var projects = document.getElementsByClassName('project');
+  var shown = 0;
+  for (var j = 0; j < projects.length; j++) {
+    var p = projects[j];
+    var show = (type == 'all' || p.getAttribute('data-type') == type);
+    p.style.display = show ? 'grid' : 'none';
+    if (show) {
+      p.className = (shown % 2 == 1) ? 'project reverse' : 'project';
+      shown++;
+    }
+  }
+  document.getElementById('empty').style.display = (shown == 0) ? 'block' : 'none';
+}
+window.onscroll = function () {
+  var h = document.getElementById('header');
+  h.className = (window.scrollY > 30) ? 'header scrolled' : 'header';
+};
+function moveBlog(dir) {
+  var t = document.getElementById('blog-track');
+  t.scrollBy({ left: dir * 290, behavior: 'smooth' });
+}
+function countText(el) {
+  document.getElementById('count').innerHTML = el.value.length + '/500';
+}
+</script>
 </body>
 </html>
