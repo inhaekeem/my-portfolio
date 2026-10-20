@@ -5,15 +5,491 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HOBIMOA</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Pretendard', sans-serif;
-      word-break: keep-all;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>HOBIMOA</h1>
+
+  <!-- 아이콘 · 마스코트 공용 정의 -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="moaBody" gradientUnits="userSpaceOnUse" x1="0" y1="38" x2="0" y2="204">
+        <stop offset="0" stop-color="#FF9A76"/><stop offset="1" stop-color="#FF6A47"/>
+      </linearGradient>
+    </defs>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></symbol>
+    <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M9 9l1.5 6L12 10l1.5 5L15 9"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></symbol>
+  </svg>
+
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo"><span class="moa" data-moa="default" style="--s: 34px"></span><span>HOBI</span>MOA</a>
+      <nav class="menu">
+        <a href="#" class="active">홈</a>
+        <a href="#recommend">취미 찾기</a>
+        <a href="#popular">카테고리</a>
+        <a href="#community">커뮤니티</a>
+      </nav>
+      <div class="nav-right">
+        <div class="search"><svg class="i"><use href="#i-search"/></svg> 어떤 취미를 찾고 있나요?</div>
+        <button class="icon-btn" aria-label="찜">♡</button>
+        <button class="icon-btn" aria-label="알림"><svg class="i"><use href="#i-bell"/></svg><span class="dot"></span></button>
+        <a href="#" class="btn btn-primary">로그인</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container hero">
+      <div class="hero-grid">
+        <div class="banner">
+          <span class="badge">오늘의 추천</span>
+          <h1>설레는 하루,<br>새로운 취미 어때요?</h1>
+          <p>기분과 취향으로 찾는 나만의 취미, 기분에 맞춰 골라드릴게요.</p>
+          <a href="#recommend" class="cta">맞춤 취미 보러가기 ›</a>
+          <div class="balloon"><span class="moa" id="heroMoa" data-moa="love" style="--s: 200px"></span></div>
+        </div>
+
+        <div class="mood-card">
+          <h2>지금 어떤 기분이신가요?</h2>
+          <p class="sub">오늘의 기분에 맞는 취미를 추천해드려요.</p>
+          <div class="moods">
+            <button class="mood m1 selected"><span class="moa" data-moa="love"></span>설레요</button>
+            <button class="mood m2"><span class="moa" data-moa="calm"></span>평온해요</button>
+            <button class="mood m3"><span class="moa" data-moa="tired"></span>지쳤어요</button>
+            <button class="mood m4"><span class="moa" data-moa="think"></span>심심해요</button>
+            <button class="mood m5"><span class="moa" data-moa="sad"></span>우울해요</button>
+            <button class="mood m6"><span class="moa" data-moa="happy"></span>활기차요</button>
+          </div>
+          <a href="#recommend" class="btn btn-primary">이 기분으로 추천받기</a>
+        </div>
+      </div>
+    </div>
+
+    <section id="recommend">
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <h2>맞춤 취미 추천</h2>
+            <p class="desc"><b id="moodLabel">설레요</b> 기분에 맞춰 골랐어요</p>
+          </div>
+          <a href="#" class="more">전체보기 ›</a>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="thumb t-coral"><span class="tag coral">초급</span><button class="heart" aria-label="찜">♥</button><span class="moa" data-moa="love" style="--s: 150px"></span></div>
+            <div class="card-body">
+              <h3>원데이 도자기</h3>
+              <p>손으로 빚는 나만의 그릇</p>
+              <div class="meta"><span><span class="star">★</span> <b>4.9</b> · 2시간</span><span class="price">45,000원</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="thumb t-lav"><span class="tag lav">실내</span><button class="heart" aria-label="찜">♡</button><span class="moa" data-moa="calm" style="--s: 150px"></span></div>
+            <div class="card-body">
+              <h3>감성 수채화</h3>
+              <p>그림 초보도 쉽게 시작해요</p>
+              <div class="meta"><span><span class="star">★</span> <b>4.8</b> · 1시간</span><span class="price">32,000원</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="thumb t-mint"><span class="tag mint">야외</span><button class="heart" aria-label="찜">♡</button><span class="moa" data-moa="happy" style="--s: 150px"></span></div>
+            <div class="card-body">
+              <h3>필름 사진 산책</h3>
+              <p>천천히 걸으며 담는 하루</p>
+              <div class="meta"><span><span class="star">★</span> <b>4.7</b> · 3시간</span><span class="price">38,000원</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="thumb t-gold"><span class="tag gold">초급</span><button class="heart" aria-label="찜">♡</button><span class="moa" data-moa="default" style="--s: 150px"></span></div>
+            <div class="card-body">
+              <h3>홈베이킹</h3>
+              <p>달콤한 마들렌 굽기</p>
+              <div class="meta"><span><span class="star">★</span> <b>4.8</b> · 2시간</span><span class="price">40,000원</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="popular">
+      <div class="container split">
+        <div class="panel">
+          <div class="sec-head">
+            <h2>베스트 인기 취미</h2>
+            <a href="#" class="more">전체보기 ›</a>
+          </div>
+          <div class="rank">
+            <div class="rank-item"><div class="ico"><span class="moa" data-moa="happy" style="--s: 44px"></span></div><div><div class="num">1</div><div class="name">홈베이킹</div><div class="cnt">이번 주 2,410명 관심</div></div></div>
+            <div class="rank-item"><div class="ico"><span class="moa" data-moa="love" style="--s: 44px"></span></div><div><div class="num">2</div><div class="name">뜨개질</div><div class="cnt">이번 주 1,982명 관심</div></div></div>
+            <div class="rank-item"><div class="ico"><span class="moa" data-moa="calm" style="--s: 44px"></span></div><div><div class="num">3</div><div class="name">플랜테리어</div><div class="cnt">이번 주 1,530명 관심</div></div></div>
+            <div class="rank-item"><div class="ico"><span class="moa" data-moa="default" style="--s: 44px"></span></div><div><div class="num">4</div><div class="name">피아노</div><div class="cnt">이번 주 1,204명 관심</div></div></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="sec-head">
+            <h2>이런 취미는 어떠세요?</h2>
+            <a href="#" class="more">전체 보기 ›</a>
+          </div>
+          <div class="match-list">
+            <div class="match"><div class="ico t-coral"><span class="moa" data-moa="love" style="--s: 46px"></span></div><div><span class="pct">98% 매칭</span><div class="name">원데이 도자기</div></div><a href="#" class="go">자세히 보기 →</a></div>
+            <div class="match"><div class="ico t-gold"><span class="moa" data-moa="happy" style="--s: 46px"></span></div><div><span class="pct">95% 매칭</span><div class="name">홈베이킹</div></div><a href="#" class="go">자세히 보기 →</a></div>
+            <div class="match"><div class="ico t-lav"><span class="moa" data-moa="think" style="--s: 46px"></span></div><div><span class="pct">91% 매칭</span><div class="name">캔들 만들기</div></div><a href="#" class="go">자세히 보기 →</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="community">
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <h2>커뮤니티</h2>
+            <p class="desc">같은 취미를 가진 사람들과 이야기 나누고, 함께 체험해요</p>
+          </div>
+          <div class="seg" role="tablist">
+            <button class="on" data-tab="feed">피드</button>
+            <button data-tab="meet">모임</button>
+            <button data-tab="companion">동행 찾기</button>
+          </div>
+        </div>
+
+        <!-- 피드 -->
+        <div class="tab-pane on" id="tab-feed">
+          <div class="two-col">
+            <div>
+              <div class="row-between" style="margin-bottom: 16px">
+                <div class="chips" style="margin: 0">
+                  <button class="chip on">전체</button>
+                  <button class="chip">체험 후기</button>
+                  <button class="chip">초보 질문</button>
+                  <button class="chip">나도 해볼래요</button>
+                </div>
+                <button class="btn btn-primary" data-open="writeModal">+ 글쓰기</button>
+              </div>
+
+              <button class="post on">
+                <div class="post-head">
+                  <div class="avatar t-coral"><span class="moa" data-moa="happy"></span></div>
+                  <div><div class="who">도예초보 민지</div><div class="when">원데이 도자기 · 2시간 전</div></div>
+                  <span class="label coral">체험 후기</span>
+                </div>
+                <p class="text">첫 물레 체험 성공! 생각보다 훨씬 재밌어요</p>
+                <div class="post-imgs"><div class="t-coral"><span class="moa" data-moa="love" style="--s: 96px"></span></div><div class="t-mint"><span class="moa" data-moa="happy" style="--s: 96px"></span></div></div>
+                <div class="post-foot"><span>♡ 24</span><span><svg class="i"><use href="#i-chat"/></svg> 8</span><span class="join-cnt">나도 해볼래요 12</span></div>
+              </button>
+
+              <button class="post">
+                <div class="post-head">
+                  <div class="avatar t-lav"><span class="moa" data-moa="think"></span></div>
+                  <div><div class="who">뜨개입문러</div><div class="when">뜨개질 · 5시간 전</div></div>
+                  <span class="label lav">초보 질문</span>
+                </div>
+                <p class="text"><span class="q">Q.</span> 코바늘이랑 대바늘, 뭐부터 시작할까요?</p>
+                <p class="sub-text">처음이라 어떤 걸 사야 할지 모르겠어요 ㅠㅠ</p>
+                <div class="post-foot"><span>♡ 5</span><span><svg class="i"><use href="#i-chat"/></svg> 14</span></div>
+              </button>
+
+              <button class="post">
+                <div class="post-head">
+                  <div class="avatar t-gold"><span class="moa" data-moa="default"></span></div>
+                  <div><div class="who">주말베이커</div><div class="when">홈베이킹 · 어제</div></div>
+                  <span class="label mint">나도 해볼래요</span>
+                </div>
+                <p class="text">이번 주말 마들렌 같이 구워봐요! 레시피 공유해요</p>
+                <div class="post-foot"><span>♡ 31</span><span><svg class="i"><use href="#i-chat"/></svg> 11</span><span class="join-cnt mint">37명 참여 중</span></div>
+              </button>
+            </div>
+
+            <!-- 게시글 상세 -->
+            <div class="panel detail">
+              <div class="post-head">
+                <div class="avatar t-coral"><span class="moa" data-moa="happy"></span></div>
+                <div><div class="who">도예초보 민지</div><div class="when">원데이 도자기 · 2시간 전</div></div>
+                <button class="follow">팔로우</button>
+              </div>
+              <div class="detail-img t-coral"><span class="moa" data-moa="love" style="--s: 200px"></span><span class="count">1/3</span></div>
+              <h3>첫 물레 체험 성공했어요!</h3>
+              <p class="body">손에 힘 조절이 어려웠는데 강사님 덕분에 예쁜 머그컵 완성! 초보도 충분히 할 수 있어요.</p>
+              <a href="#recommend" class="class-link">
+                <div class="ico t-coral"><span class="moa" data-moa="default" style="--s: 38px"></span></div>
+                <div><b>물레로 만드는 나만의 머그컵</b><span>홍대 공방 · 45,000원</span></div>
+                <span class="arrow">›</span>
+              </a>
+              <div class="detail-actions">
+                <button class="btn btn-primary">나도 해볼래요 12</button>
+                <span class="stat"><span class="heart-on">♥</span> 24</span>
+                <span class="stat"><svg class="i"><use href="#i-chat"/></svg> 8</span>
+              </div>
+              <div class="comments">
+                <h4>댓글 <span>8</span></h4>
+                <div class="comment">
+                  <div class="avatar sm t-gold"><span class="moa" data-moa="default"></span></div>
+                  <div><div class="who">주말베이커</div><p>저도 다음 주에 신청했어요! 기대돼요</p><small>1시간 전 · 답글 달기</small></div>
+                </div>
+                <div class="comment">
+                  <div class="avatar sm t-lav"><span class="moa" data-moa="think"></span></div>
+                  <div><div class="who">뜨개입문러</div><p>완성품 너무 예뻐요</p></div>
+                </div>
+                <div class="input-row"><input placeholder="댓글을 남겨주세요"><button class="send" aria-label="등록">↑</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 모임 -->
+        <div class="tab-pane" id="tab-meet">
+          <div class="two-col">
+            <div>
+              <div class="row-between" style="margin-bottom: 16px">
+                <div class="chips" style="margin: 0">
+                  <button class="chip on">전체</button>
+                  <button class="chip">모집 중</button>
+                  <button class="chip">동행 찾기</button>
+                  <button class="chip">내 모임</button>
+                </div>
+                <button class="btn btn-primary" data-open="meetModal">+ 모임 만들기</button>
+              </div>
+
+              <button class="meet-item on">
+                <div class="ico t-coral"><span class="moa" data-moa="love" style="--s: 80px"></span></div>
+                <div class="info">
+                  <span class="label coral">모집 중</span>
+                  <span class="title">주말 도자기 원정대</span>
+                  <span class="line"><svg class="i"><use href="#i-cal"/></svg> 10월 25일 (토) 14:00</span>
+                  <span class="line"><svg class="i"><use href="#i-pin"/></svg> 홍대 · 흙과 손 공방</span>
+                  <div class="row"><span class="people">3/6명</span><span class="join">참여하기 ›</span></div>
+                </div>
+              </button>
+              <button class="meet-item">
+                <div class="ico t-mint"><span class="moa" data-moa="happy" style="--s: 80px"></span></div>
+                <div class="info">
+                  <span class="label coral">모집 중</span>
+                  <span class="title">한강 필름 사진 산책</span>
+                  <span class="line"><svg class="i"><use href="#i-cal"/></svg> 10월 26일 (일) 16:00</span>
+                  <span class="line"><svg class="i"><use href="#i-pin"/></svg> 여의도 한강공원</span>
+                  <div class="row"><span class="people">5/8명</span><span class="join">참여하기 ›</span></div>
+                </div>
+              </button>
+              <button class="meet-item">
+                <div class="ico t-gold"><span class="moa" data-moa="calm" style="--s: 80px"></span></div>
+                <div class="info">
+                  <span class="label gold">마감 임박</span>
+                  <span class="title">퇴근 후 뜨개 모임</span>
+                  <span class="line"><svg class="i"><use href="#i-cal"/></svg> 매주 수 19:30</span>
+                  <span class="line"><svg class="i"><use href="#i-pin"/></svg> 합정 · 니트카페</span>
+                  <div class="row"><span class="people">7/8명</span><span class="join">참여하기 ›</span></div>
+                </div>
+              </button>
+              <div class="companion">
+                <span class="moa" data-moa="think" style="--s: 52px"></span>
+                <div><b>혼자 가기 망설여진다면?</b>같은 클래스 들을 동행을 찾아보세요</div>
+                <button data-goto="companion">동행 찾기 ›</button>
+              </div>
+            </div>
+
+            <!-- 모임 상세 + 채팅 -->
+            <div class="panel meet-detail detail">
+              <div class="meet-detail-top"><span class="moa" data-moa="happy" style="--s: 150px"></span></div>
+              <span class="label coral">모집 중</span>
+              <h3>주말 도자기 원정대</h3>
+              <div class="when">모임장 도예초보 민지 · 공예</div>
+              <div class="info-box">
+                <svg class="i"><use href="#i-cal"/></svg> 10월 25일 (토) 오후 2:00<br>
+                <svg class="i"><use href="#i-pin"/></svg> 홍대 흙과 손 공방<br>
+                <svg class="i"><use href="#i-coin"/></svg> 참가비 45,000원 (클래스 비용)
+              </div>
+              <div class="who">모임 소개</div>
+              <p class="body" style="margin: 6px 0 0; font-size: 14px; color: var(--gray-1); line-height: 1.6">함께 물레 클래스 듣고 근처 카페에서 작품 구경하며 수다 떨어요. 초보 환영!</p>
+              <h4><b>참여 멤버 <span>3/6</span></b><em class="dday" style="font-style: normal">마감까지 D-6</em></h4>
+              <div class="members">
+                <div><div class="avatar t-coral"><span class="moa" data-moa="happy"></span></div>민지</div>
+                <div><div class="avatar t-gold"><span class="moa" data-moa="default"></span></div>베이커</div>
+                <div><div class="avatar t-lav"><span class="moa" data-moa="think"></span></div>뜨개</div>
+                <div><div class="avatar empty">+</div></div>
+                <div><div class="avatar empty">+</div></div>
+                <div><div class="avatar empty">+</div></div>
+              </div>
+              <div class="notice">ⓘ 참여 확정 시 모임 채팅방에 자동 입장돼요</div>
+              <div class="actions">
+                <button class="chat-btn" aria-label="채팅"><svg class="i"><use href="#i-chat"/></svg></button>
+                <button class="btn btn-primary">모임 참여하기</button>
+              </div>
+
+              <div class="chat">
+                <div class="chat-head"><div><b>주말 도자기 원정대</b><small>참여자 3명</small></div><span class="when">채팅</span></div>
+                <div class="pin"><span><svg class="i"><use href="#i-pin"/></svg> 10/25 (토) 14:00 공방 앞 집합</span> <span>›</span></div>
+                <div class="chat-body">
+                  <span class="day">2026년 10월 19일</span>
+                  <div class="name" style="font-size: 12px; color: var(--gray-1); margin-left: 40px">도예초보 민지</div>
+                  <div class="msg"><div class="avatar sm t-coral"><span class="moa" data-moa="happy"></span></div><div class="bubble">안녕하세요! 모임장 민지예요</div><time>오후 2:10</time></div>
+                  <div class="msg"><div class="spacer"></div><div class="bubble">토요일에 다들 처음이시죠?</div><time>오후 2:10</time></div>
+                  <div class="msg me"><div class="bubble">네 완전 처음이에요!</div><time>오후 2:12</time></div>
+                  <div class="msg me"><div class="bubble">앞치마 따로 챙겨가야 하나요?</div><time>오후 2:12</time></div>
+                  <div class="name" style="font-size: 12px; color: var(--gray-1); margin-left: 40px">베이킹러버</div>
+                  <div class="msg"><div class="avatar sm t-gold"><span class="moa" data-moa="default"></span></div><div class="bubble">공방에서 빌려준대요!</div><time>오후 2:15</time></div>
+                  <div class="msg"><div class="spacer"></div><div class="bubble">끝나고 카페도 가요</div><time>오후 2:15</time></div>
+                  <span class="sys">뜨개입문러님이 들어왔어요</span>
+                  <div class="msg me"><div class="bubble">환영해요!</div><time>오후 2:20</time></div>
+                </div>
+                <form class="input-row" id="chatForm"><input placeholder="메시지 입력"><button class="send" aria-label="전송">↑</button></form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 동행 찾기 -->
+        <div class="tab-pane" id="tab-companion">
+          <div class="search-bar"><svg class="i"><use href="#i-search"/></svg> 어떤 클래스의 동행을 찾나요?</div>
+          <div class="row-between" style="margin-bottom: 20px">
+            <div class="chips" style="margin: 0">
+              <button class="chip on">전체</button>
+              <button class="chip">이번 주</button>
+              <button class="chip">공예</button>
+              <button class="chip">요리</button>
+              <button class="chip">운동</button>
+            </div>
+            <button class="btn btn-primary">+ 동행 구하기</button>
+          </div>
+          <div class="comp-grid">
+            <div class="comp">
+              <div class="post-head">
+                <div class="avatar sm t-gold"><span class="moa" data-moa="default"></span></div>
+                <div><span class="who">베이킹러버</span> <span class="age">· 20대</span></div>
+                <span class="label coral">1/2명</span>
+              </div>
+              <h3>마카롱 원데이 같이 들으실 분!</h3>
+              <div class="class"><svg class="i"><use href="#i-cal"/></svg> 마카롱 원데이 클래스 · 10/27 (월) 19:00</div>
+              <button class="btn btn-line">동행 신청하기</button>
+            </div>
+            <div class="comp">
+              <div class="post-head">
+                <div class="avatar sm t-mint"><span class="moa" data-moa="happy"></span></div>
+                <div><span class="who">산책하는사람</span> <span class="age">· 30대</span></div>
+                <span class="label coral">2/4명</span>
+              </div>
+              <h3>한강 나이트 러닝 동행 구해요</h3>
+              <div class="class"><svg class="i"><use href="#i-cal"/></svg> 한강 나이트 러닝 · 10/24 (금) 20:00</div>
+              <button class="btn btn-line">동행 신청하기</button>
+            </div>
+            <div class="comp done">
+              <div class="post-head">
+                <div class="avatar sm t-lav"><span class="moa" data-moa="calm"></span></div>
+                <div><span class="who">수채화초보</span> <span class="age">· 20대</span></div>
+                <span class="label gray">모집 완료</span>
+              </div>
+              <h3>수채화 클래스 혼자 가기 쑥스러워요</h3>
+              <div class="class"><svg class="i"><use href="#i-cal"/></svg> 감성 수채화 원데이 · 10/30 (목) 14:00</div>
+              <button class="btn btn-line" disabled>모집 완료</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 글쓰기 모달 -->
+    <div class="modal" id="writeModal">
+      <div class="sheet">
+        <div class="sheet-head">
+          <h3>글쓰기</h3>
+          <div><button class="temp">임시저장</button> <button class="close" data-close aria-label="닫기">✕</button></div>
+        </div>
+        <div class="field">
+          <label>게시판 선택</label>
+          <div class="chips" style="margin: 0">
+            <button class="chip coral on">체험 후기</button>
+            <button class="chip coral">초보 질문</button>
+            <button class="chip coral">나도 해볼래요</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>취미 태그</label>
+          <div class="tags"><span>#원데이 도자기</span><button>+ 태그 추가</button></div>
+        </div>
+        <div class="field"><input class="title-input" placeholder="제목을 입력해주세요"></div>
+        <div class="field">
+          <textarea rows="5" placeholder="어떤 체험이었나요?&#10;느낀 점, 꿀팁, 추천 이유를 자유롭게 들려주세요."></textarea>
+          <div style="text-align: right; font-size: 12px; color: var(--gray-3); margin-top: 4px">0 / 2000</div>
+        </div>
+        <div class="field"><div class="hint">사진이 있는 후기는 3배 더 많이 읽혀요!</div></div>
+        <div class="field">
+          <label>사진 첨부 <span class="counter">2/10</span></label>
+          <div class="photos"><div class="add"><svg class="i"><use href="#i-camera"/></svg> 추가</div><div class="t-coral"><span class="moa" data-moa="love" style="--s: 66px"></span></div><div class="t-mint"><span class="moa" data-moa="happy" style="--s: 66px"></span></div></div>
+        </div>
+        <p class="guide">ⓘ 커뮤니티 가이드를 지켜 따뜻한 공간을 만들어요</p>
+        <button class="btn btn-primary submit" data-close>등록하기</button>
+      </div>
+    </div>
+
+    <!-- 모임 만들기 모달 -->
+    <div class="modal" id="meetModal">
+      <div class="sheet">
+        <div class="sheet-head">
+          <h3>모임 만들기</h3>
+          <button class="close" data-close aria-label="닫기">✕</button>
+        </div>
+        <div class="field"><div class="img-drop"><span><svg class="i"><use href="#i-camera"/></svg> 대표 이미지 추가</span></div></div>
+        <div class="field">
+          <label>취미 카테고리</label>
+          <div class="chips" style="margin: 0">
+            <button class="chip coral on">공예</button>
+            <button class="chip coral">요리</button>
+            <button class="chip coral">운동</button>
+            <button class="chip coral">음악</button>
+            <button class="chip coral">사진</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>모임 이름 <span style="float: right; font-size: 12px; font-weight: 400; color: var(--gray-3)">9/20</span></label>
+          <input value="주말 도자기 원정대">
+        </div>
+        <div class="field">
+          <label>날짜 · 시간</label>
+          <div class="grid-2"><input value="10월 25일 (토)"><input value="14:00"></div>
+        </div>
+        <div class="field">
+          <label>장소</label>
+          <input value="홍대 흙과 손 공방">
+        </div>
+        <div class="field row-between">
+          <label style="margin: 0; font-size: 14px; font-weight: 700">모집 인원</label>
+          <div class="stepper"><button>−</button>6명<button class="plus">+</button></div>
+        </div>
+        <div class="field row-between" style="padding-top: 16px; border-top: 1px solid var(--line)">
+          <div style="font-size: 14px; font-weight: 700">참여 승인 후 입장<small>모임장이 확인한 멤버만 들어와요</small></div>
+          <span class="toggle"></span>
+        </div>
+        <button class="btn btn-primary submit" data-close>모임 만들기</button>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="cta-band">
+          <span class="moa" data-moa="happy" style="--s: 120px"></span>
+          <div>
+            <h2>나에게 맞는 <span>취미</span>를 찾아볼까요?</h2>
+            <p>오늘의 기분과 취향을 알려주시면 HOBIMOA가 꼭 맞는 취미를 추천해드려요.</p>
+          </div>
+          <a href="#" class="btn btn-primary">시작하기</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span class="logo"><span class="moa" data-moa="default" style="--s: 28px"></span><span style="color: var(--primary)">HOBI</span>MOA</span>
+      <span>기분과 취향으로 찾는 나만의 취미 · © 2026 HOBIMOA</span>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
